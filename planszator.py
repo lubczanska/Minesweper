@@ -51,3 +51,6 @@ tab = generujtablice(n,x,y)
 for i in tab:
     print(i)
     print("\n")
+
+
+
