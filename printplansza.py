@@ -3,6 +3,30 @@ from planszator import generujtablice
 
 
 
+def printplanszeszybko (x_coord, y_coord):
+    if tab[x_coord][y_coord] == 0:
+        screen.blit(open0, (16 * x_coord, 16 * y_coord))
+    elif tab[x_coord][y_coord] == 1:
+        screen.blit(open1, (16 * x_coord, 16 * y_coord))
+    elif tab[x_coord][y_coord] == 2:
+        screen.blit(open2, (16 * x_coord, 16 * y_coord))
+    elif tab[x_coord][y_coord] == 3:
+        screen.blit(open3, (16 * x_coord, 16 * y_coord))
+    elif tab[x_coord][y_coord] == 4:
+        screen.blit(open4, (16 * x_coord, 16 * y_coord))
+    elif tab[x_coord][y_coord] == 5:
+        screen.blit(open5, (16 * x_coord, 16 * y_coord))
+    elif tab[x_coord][y_coord] == 6:
+        screen.blit(open6, (16 * x_coord, 16 * y_coord))
+    elif tab[x_coord][y_coord] == 7:
+        screen.blit(open7, (16 * x_coord, 16 * y_coord))
+    elif tab[x_coord][y_coord] == 8:
+        screen.blit(open8, (16 * x_coord, 16 * y_coord))
+    elif tab[x_coord][y_coord] == 9:
+        screen.blit(bomb, (16 * x_coord, 16 * y_coord))
+
+
+
 pygame.init()
 
 screen = pygame.display.set_mode((160, 160))
@@ -35,32 +59,17 @@ size_y = 10
 bombs = 30
 tab = generujtablice(bombs, size_x, size_y)
 
+
+
 while running:
 
 
     for x_coord in range(size_x):
         for y_coord in range(size_y):
-            if tab[x_coord][y_coord] == 0:
-                screen.blit(open0, (16 * x_coord, 16 * y_coord))
-            elif tab[x_coord][y_coord] == 1:
-                screen.blit(open1, (16 * x_coord, 16 * y_coord))
-            elif tab[x_coord][y_coord] == 2:
-                screen.blit(open2, (16 * x_coord, 16 * y_coord))
-            elif tab[x_coord][y_coord] == 3:
-                screen.blit(open3, (16 * x_coord, 16 * y_coord))
-            elif tab[x_coord][y_coord] == 4:
-                screen.blit(open4, (16 * x_coord, 16 * y_coord))
-            elif tab[x_coord][y_coord] == 5:
-                screen.blit(open5, (16 * x_coord, 16 * y_coord))
-            elif tab[x_coord][y_coord] == 6:
-                screen.blit(open6, (16 * x_coord, 16 * y_coord))
-            elif tab[x_coord][y_coord] == 7:
-                screen.blit(open7, (16 * x_coord, 16 * y_coord))
-            elif tab[x_coord][y_coord] == 8:
-                screen.blit(open8, (16 * x_coord, 16 * y_coord))
-            elif tab[x_coord][y_coord] == 9:
-                screen.blit(bomb, (16 * x_coord, 16 * y_coord))
+            printplanszeszybko(x_coord, y_coord)
     pygame.display.flip()
+
+
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
