@@ -3,10 +3,13 @@ import pygame
 from odkrywane import pokazpuste, pokazbomby
 
 def leftclick(lclick,tab):
-    if(tab[lclick[0]][lclick[1]] == 9):
+    if(tab[lclick[0]][lclick[1]] >= 20):
+        tab[lclick[0]][lclick[1]] -= 20
+
+    elif (tab[lclick[0]][lclick[1]] == 9):
         tab = pokazbomby(tab)
         return tab
-    elif tab[lclick[0]][lclick[1]] > 0:
+    elif tab[lclick[0]][lclick[1]] > 0 and tab[lclick[0]][lclick[1]] < 10:
         tab[lclick[0]][lclick[1]] += 10
     else:
         tab = pokazpuste(tab, lclick[0], lclick[1])
@@ -19,7 +22,7 @@ def leftclick(lclick,tab):
 
 
 def rightclick(rclick,tab):
-    if tab[rclick[0]][rclick[1]] > 9:
+    if tab[rclick[0]][rclick[1]] < 10:
         tab[rclick[0]][rclick[1]]+=20
     return tab
 

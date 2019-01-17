@@ -26,8 +26,21 @@ def printplanszeszybko (tab, x_coord, y_coord,screen):
     open8.convert()
     bomb = pygame.image.load("images/bombrevealed.gif")
     bomb.convert()
-
-
+    flaga = pygame.image.load("images/bombflagged.gif")
+    flaga.convert()
+    # 0-9 - nie wciśnięte wgle
+    # 10 - wcisnięty pusty
+    # 11 - 18 wciśnięte, widać co jest
+    # 19 - bomba kliknięta
+    # 29 - bomba oflagowana
+    # 20-28 - flaga
+    #
+    #
+    #
+    #
+    #
+    #
+    #
 
     if tab[x_coord][y_coord] == 0:
         screen.blit(closed, (16 * x_coord, 16 * y_coord))
@@ -53,7 +66,8 @@ def printplanszeszybko (tab, x_coord, y_coord,screen):
         screen.blit(closed, (16 * x_coord, 16 * y_coord))
     elif tab[x_coord][y_coord] == 10:
         screen.blit(open0,  (16 * x_coord, 16 * y_coord))
-
+    elif tab[x_coord][y_coord] > 19:
+        screen.blit(flaga,(16*x_coord, 16* y_coord))
 
 
 
