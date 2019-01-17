@@ -37,20 +37,8 @@ def generujtablice(n, x, y):
                         bsum += 1
             if bsum > 0  and tab[i][j] !=9:
                 tab[i][j] = bsum
-            print(times)
-        print("\n")
 
     return tab
-
-n = int(input("wpisz ilosc bomb "))
-x = int(input("wpisz xowe "))
-y = int(input("wpisz yowe "))
-
-tab = generujtablice(n,x,y)
-
-for i in tab:
-    print(i)
-    print("\n")
 
 
 

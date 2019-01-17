@@ -1,5 +1,14 @@
 import pygame
 
+from odkrywane import pokazbomby,pokazpuste
+from planszator import generujtablice
+def leftclick(lclick,tab):
+    if(tab[lclick[0]][lclick[1]] == 9):
+        tab =pokazbomby(tab)
+        return tab
+    else:
+        pokazpuste(tab, lclick[0], lclick[1])
+        
 
 pygame.init()
 
@@ -8,8 +17,8 @@ ny = 4
 x = 160
 y = 160
 
-sizex = 160/4
-sizey = 160/4
+sizex = 160/nx
+sizey = 160/ny
 
 screen = pygame.display.set_mode((x,y))
 lclick = []
@@ -21,7 +30,7 @@ for x in range(2):
 
 
 running = 1
-
+tab = generujtablice(2, nx, ny)
 while running:
     
     for event in pygame.event.get():
@@ -29,10 +38,17 @@ while running:
             running = 0
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
-                lclick[0] = event.pos[0]//sizex
-                lclick[1] = event.pos[1]//sizey
-                print(lclick)
+                lclick[0] = int(event.pos[0]//sizex)
+                lclick[1] = int(event.pos[1]//sizey)
+                tab = leftclick(lclick, tab)
+                print(tab)
             if event.button == 3:
-                rclick[0] = event.pos[0]//sizex
-                rclick[1] = event.pos[1]//sizey
-                print(rclick)
+                rclick[0] = int(event.pos[0]//sizex)
+                rclick[1] = int(event.pos[1]//sizey)
+                                
+
+
+
+
+
+    
