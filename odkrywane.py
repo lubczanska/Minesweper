@@ -51,7 +51,10 @@ def odkrywajtablice(tab, x, y):
     else:
         pokazpuste(tab, x, y)
 
-odkrywajtablice(TAB, X, Y)
+    return tab
+
+
+tab = odkrywajtablice(TAB, X, Y)
 
 
 print(" ")
