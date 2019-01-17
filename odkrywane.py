@@ -1,11 +1,12 @@
 from planszator import generujtablice
 
-TAB = generujtablice(10, 7, 7)
+TAB = generujtablice(5, 7, 7)
 X = 4
 Y = 5
 
 for i in TAB:
     print(i)
+
 
 def pokazbomby(tab):
     for i in range(len(tab)):
@@ -15,40 +16,45 @@ def pokazbomby(tab):
 
 
 def pokazpuste(tab, x, y):
-    if x < 0 or y < 0 or x > len(tab[0]) or y > len(tab):
+    if tab[x][y] == 0:
+        tab[x][y] += 10
+    elif tab[x][y] < 9:
+        tab[x][y] += 10
+        return 0
+    else:
         return 0
 
-    if tab[x][y] < 9:
-        tab[x][y] += 10
-
-    if y > 0 and tab[y - 1][x] < 9:
-        tab[y - 1][x] += 10
+    if x > 0:
+        pokazpuste(tab, x - 1, y)
+    if y > 0:
         pokazpuste(tab, x, y - 1)
-    elif y < len(tab) - 1 and tab[y + 1][x] < 9:
-        tab[y + 1][x] += 10
+    if x < len(tab) - 1:
+        pokazpuste(tab, x + 1, y)
+    if y < len(tab[0]) - 1:
         pokazpuste(tab, x, y + 1)
-    elif x > 0 and tab[y][x - 1] < 9:
-        tab[y][x - 1] += 10
-        pokazpuste(tab, x, y + 1)
-    elif x < len(tab[0]) - 1 and tab[y][x + 1] < 9:
-        tab[y][x + 1] += 10
-        pokazpuste(tab, x, y + 1)
+    if y < len(tab[0]) - 1 and x < len(tab) - 1:
+        pokazpuste(tab, x + 1, y + 1)
+    if y < len(tab[0]) - 1 and x > 0:
+        pokazpuste(tab, x - 1, y + 1)
+    if y > 0 and x < len(tab) - 1:
+        pokazpuste(tab, x + 1, y - 1)
+    if y > 0 and x > 0:
+        pokazpuste(tab, x - 1, y - 1)
 
     return 0
 
 
 def odkrywajtablice(tab, x, y):
-    if tab[y][x] == 9:
+    print(tab[x][y])
+    if tab[x][y] == 9:
         pokazbomby(tab)
     else:
         pokazpuste(tab, x, y)
 
+odkrywajtablice(TAB, X, Y)
 
-#odkrywajtablice(TAB, X, Y)
 
-print(len(TAB))
-print(len(TAB[0]))
-print("###")
+print(" ")
 
 for i in TAB:
     print(i)
