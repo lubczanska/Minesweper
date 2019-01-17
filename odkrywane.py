@@ -1,3 +1,4 @@
+
 from planszator import generujtablice
 
 
@@ -43,4 +44,3 @@ def odkrywajtablice(tab, x, y):
         pokazbomby(tab)
     else:
         pokazpuste(tab, x, y)
-
