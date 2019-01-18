@@ -1,13 +1,24 @@
 import random
 
+def generujpusta(x,y):
+    tab = [[0 for i in range(x)] for j in range(y)]
+    return tab
 
+def generujtablice(n, x, y, bx, by):
 
-def generujtablice(n, x, y):
-    bsum = 0
     tab = [[0 for i in range(x)] for j in range(y)]
     #tutaj tworzymy naszą tablicę, o rozmiarach takich jakie mają być za pomocą list comprehension
+    rx = random.randint(0,x-1)
+    ry = random.randint(0,y-1)
+
     for i in range(n):
-        tab[random.randint(0,x-1)][random.randint(0,y-1)] = 9
+        rx = random.randint(0, x - 1)
+        ry = random.randint(0, y - 1)
+        if rx == bx and ry == by:
+            rx = random.randint(0, x - 1)
+            ry = random.randint(0, y - 1)
+        tab[rx][ry] = 9
+
     for i in range(x):
 
         for j in range(y):

@@ -44,3 +44,20 @@ def odkrywajtablice(tab, x, y):
         pokazbomby(tab)
     else:
         pokazpuste(tab, x, y)
+
+
+def scanforwin(tab, n):
+    flaggedbombs = 0
+    opencells = 0
+    for a in tab:
+        for b in a:
+            if b == 29:
+                flaggedbombs += 1
+            if b > 9:
+                opencells +=1
+    if flaggedbombs == n and opencells == len(tab)*len(tab[0]):
+        return 0
+    else:
+        return 1
+
+

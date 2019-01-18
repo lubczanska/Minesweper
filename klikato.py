@@ -1,7 +1,7 @@
 import pygame
 
 from odkrywane import pokazpuste, pokazbomby
-
+from planszator import generujtablice
 def leftclick(lclick,tab):
     if(tab[lclick[0]][lclick[1]] >= 20):
         tab[lclick[0]][lclick[1]] -= 20
@@ -28,7 +28,7 @@ def rightclick(rclick,tab):
 
 
 
-def eventuser(event, tab):
+def eventuser(event, tab, fclick):
     print(event)
     lclick = []
     rclick = []
@@ -44,16 +44,22 @@ def eventuser(event, tab):
 
     sizex = 16
     sizey = 16
+
     if event.button == 1:
         lclick[0] = int(event.pos[0]//sizex)
         lclick[1] = int(event.pos[1]//sizey)
+
+        if(fclick == 1):
+            tab = generujtablice(30, sizex, sizey, lclick[0], lclick[1])
         tab = leftclick(lclick, tab)
         print(tab)
     if event.button == 3:
         rclick[0] = int(event.pos[0]//sizex)
         rclick[1] = int(event.pos[1]//sizey)
         tab = rightclick(rclick, tab)
-                            
+
+
+
     return tab
 
 
