@@ -1,5 +1,5 @@
 from klikato import eventuser
-from odkrywane import pokazpuste, pokazbomby
+from odkrywane import scanforwin
 from planszator import generujtablice, generujpusta
 from printplansza import printplanszeszybko
 import pygame
@@ -27,7 +27,8 @@ while running:
 
 
 
-
+    if scanforwin(tab, 30) == 0:
+        running = 0
     for event in pygame.event.get():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -37,5 +38,6 @@ while running:
         if event.type == pygame.QUIT:
             running = 0
 
-    pygame.display.flip()
+pygame.display.flip()
 
+print("wygrales")
