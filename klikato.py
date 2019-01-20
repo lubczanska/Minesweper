@@ -1,5 +1,5 @@
 import pygame
-
+from gameclass import Gamesettings
 from odkrywane import pokazpuste, pokazbomby
 from planszator import generujtablice
 def leftclick(lclick,tab):
@@ -28,7 +28,7 @@ def rightclick(rclick,tab):
 
 
 
-def eventuser(event, tab, fclick):
+def eventuser(event, tab, fclick, game):
     print(event)
     lclick = []
     rclick = []
@@ -42,15 +42,15 @@ def eventuser(event, tab, fclick):
     
 
 
-    sizex = 16
-    sizey = 16
+    sizex = game.nx
+    sizey = game.ny
 
     if event.button == 1:
-        lclick[0] = int(event.pos[0]//sizex)
-        lclick[1] = int(event.pos[1]//sizey)
+        lclick[0] = int((event.pos[0]-game.borderleft)//sizex)
+        lclick[1] = int((event.pos[1]-game.bordertop)//sizey)
 
         if(fclick == 1):
-            tab = generujtablice(30, sizex, sizey, lclick[0], lclick[1])
+            tab = generujtablice(game.n, sizex, sizey, lclick[0], lclick[1])
         tab = leftclick(lclick, tab)
         print(tab)
     if event.button == 3:

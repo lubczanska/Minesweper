@@ -1,8 +1,8 @@
 import pygame
+from gameclass import Gamesettings
 
 
-
-def printplanszeszybko (tab, x_coord, y_coord,screen):
+def printplanszeszybko (tab, x_coord, y_coord,screen, game):
 
     closed = pygame.image.load("images/blank.gif")
     closed.convert()
@@ -43,31 +43,31 @@ def printplanszeszybko (tab, x_coord, y_coord,screen):
     #
 
     if tab[x_coord][y_coord] == 0:
-        screen.blit(closed, (16 * x_coord, 16 * y_coord))
+        screen.blit(closed, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 11:
-        screen.blit(open1, (16 * x_coord, 16 * y_coord))
+        screen.blit(open1, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 12:
-        screen.blit(open2, (16 * x_coord, 16 * y_coord))
+        screen.blit(open2, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 13:
-        screen.blit(open3, (16 * x_coord, 16 * y_coord))
+        screen.blit(open3, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 14:
-        screen.blit(open4, (16 * x_coord, 16 * y_coord))
+        screen.blit(open4, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 15:
-        screen.blit(open5, (16 * x_coord, 16 * y_coord))
+        screen.blit(open5, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 16:
-        screen.blit(open6, (16 * x_coord, 16 * y_coord))
+        screen.blit(open6, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 17:
-        screen.blit(open7, (16 * x_coord, 16 * y_coord))
+        screen.blit(open7, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 18:
-        screen.blit(open8, (16 * x_coord, 16 * y_coord))
+        screen.blit(open8, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 19:
-        screen.blit(bomb, (16 * x_coord, 16 * y_coord))
+        screen.blit(bomb, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] >= 0 and tab[x_coord][y_coord] <=9:
-        screen.blit(closed, (16 * x_coord, 16 * y_coord))
+        screen.blit(closed, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 10:
-        screen.blit(open0,  (16 * x_coord, 16 * y_coord))
+        screen.blit(open0,  (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] > 19:
-        screen.blit(flaga,(16*x_coord, 16* y_coord))
+        screen.blit(flaga,(16*x_coord + game.borderleft, 16* y_coord + game.bordertop))
 
 
 
