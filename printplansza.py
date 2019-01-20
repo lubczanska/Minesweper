@@ -67,7 +67,7 @@ def printplanszeszybko (tab, x_coord, y_coord,screen, game):
     elif tab[x_coord][y_coord] == 10:
         screen.blit(open0,  (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] > 19:
-        screen.blit(flaga,(16*x_coord + game.borderleft, 16* y_coord + game.bordertop))
+        screen.blit(flaga,(16*x_coord + game.borderleft, 16* y_coord + game.bordertop   ))
 
 
 

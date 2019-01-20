@@ -46,17 +46,21 @@ def eventuser(event, tab, fclick, game):
     sizey = game.ny
 
     if event.button == 1:
-        lclick[0] = int((event.pos[0]-game.borderleft)//sizex)
-        lclick[1] = int((event.pos[1]-game.bordertop)//sizey)
+        if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.bordertop):
+            lclick[0] = int((event.pos[0]-game.borderleft)//sizex)
+            lclick[1] = int((event.pos[1]-game.bordertop)//sizey)
 
-        if(fclick == 1):
-            tab = generujtablice(game.n, sizex, sizey, lclick[0], lclick[1])
-        tab = leftclick(lclick, tab)
-        print(tab)
+            if(fclick == 1):
+                tab = generujtablice(game.n, sizex, sizey, lclick[0], lclick[1])
+            tab = leftclick(lclick, tab)
+            print(tab)
+        else:
+            #tutaj wpiszemu funcje do obsugi menu
     if event.button == 3:
-        rclick[0] = int(event.pos[0]//sizex)
-        rclick[1] = int(event.pos[1]//sizey)
-        tab = rightclick(rclick, tab)
+        if (event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex - game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey - game.bordertop):
+            rclick[0] = int((event.pos[0]-game.borderleft)//sizex)
+            rclick[1] = int((event.pos[1]-game.bordertop)//sizey)
+            tab = rightclick(rclick, tab)
 
 
 
