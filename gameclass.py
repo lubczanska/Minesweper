@@ -10,3 +10,17 @@ class Gamesettings:
         self.blocksizex = blocksizex
         self.blocksizey = blocksizey
         self.wall = self.windowsizey - self.ny * self.blocksizey
+
+    def scanforwin(self, tab):
+        flaggedbombs = 0
+        opencells = 0
+        for a in tab:
+            for b in a:
+                if b == 29:
+                    flaggedbombs += 1
+                if b > 9:
+                    opencells += 1
+        if flaggedbombs == self.n and opencells == len(tab) * len(tab[0]):
+            return 0
+        else:
+            return 1

@@ -55,13 +55,15 @@ def eventuser(event, tab, fclick, game):
             tab = leftclick(lclick, tab)
             print(tab)
         else:
-            #tutaj wpiszemu funcje do obsugi menu
+            print("somthing")
+
     if event.button == 3:
         if (event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex - game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey - game.bordertop):
             rclick[0] = int((event.pos[0]-game.borderleft)//sizex)
             rclick[1] = int((event.pos[1]-game.bordertop)//sizey)
             tab = rightclick(rclick, tab)
-
+        else:
+            print("somethingsomethinghere")
 
 
     return tab
