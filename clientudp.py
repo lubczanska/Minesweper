@@ -9,11 +9,15 @@ def getboard():
     sock.bind((UDP_IP, UDP_PORT))
 
     data, addr = sock.recvfrom(1024)
-    zwracanie = {"tablica": data, "adress": addr}
-
+    #print(data)
+   # rozczytane = data.decode()
     data = json.loads(data.decode())
 
-    tab = data.get("tablica")
+    zwracanie = {"tablica": data.get("tablica"), "adress": addr}
+
+
+
+
 
     return zwracanie
 

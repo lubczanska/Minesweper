@@ -5,10 +5,11 @@ from printplansza import printplanszeszybko
 from gameclass import Gamesettings
 import pygame
 from clientudp import getboard, getloss
+import json
 IS_MULTI = 1
 
-nx = 16
-ny = 16
+nx = 15
+ny = 15
 n = 30
 
 game = Gamesettings(nx, ny, n, 30, 30, 16, 16)
@@ -28,16 +29,21 @@ fclick = 1
 if IS_MULTI == 1:
     fclick = 0
     zwrac = getboard()
-    tab = zwrac.get("tablica")
+    tab1 = zwrac["tablica"]
+    tab = tab1[:]
+    print(tab)
     adress = zwrac.get("adress")
 
 else:
     tab = generujpusta(game.nx, game.ny)
 
 
+clock = pygame.time.Clock()
+
 while running == 1:
-    for a in range(nx):
-        for b in range(ny):
+    clock.tick(60)
+    for a in range(game.nx):
+        for b in range(game.ny):
 
             printplanszeszybko(tab, a, b, screen, game)
 
@@ -45,6 +51,9 @@ while running == 1:
 
 
     running = game.scanforwin(tab)
+
+    running = getloss()
+    
     for event in pygame.event.get():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -55,7 +64,7 @@ while running == 1:
             running = 0
 
     pygame.display.flip()
-    if(IS_MULTI == 1):
+    if(IS_MULTI == 1) and running != 1:
         running = getloss()-2
 
 if running == -2 or running == -1:
@@ -63,5 +72,5 @@ if running == -2 or running == -1:
 if running == 0 :
     print("lost")
 pygame.display.flip()
-time.sleep(5)
+time.sleep(2)
 
