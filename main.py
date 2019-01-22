@@ -10,7 +10,7 @@ nx = 16
 ny = 16
 n = 30
 
-game = Gamesettings(nx, ny, n, 30, 30, 16, 16)
+game = Gamesettings(nx, ny, n, 55, 12, 16, 16)
 
 
 
