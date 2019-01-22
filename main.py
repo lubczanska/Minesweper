@@ -4,7 +4,8 @@ from planszator import generujtablice, generujpusta
 from printplansza import printplanszeszybko
 from gameclass import Gamesettings
 import pygame
-IS_MULTI = 0
+from clientudp import getboard, getloss
+IS_MULTI = 1
 
 nx = 16
 ny = 16
@@ -15,7 +16,7 @@ game = Gamesettings(nx, ny, n, 30, 30, 16, 16)
 
 
 
-tab = generujpusta(game.nx, game.ny)
+
 pygame.init()
 
 screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))
@@ -26,7 +27,12 @@ fclick = 1
 
 if IS_MULTI == 1:
     fclick = 0
+    zwrac = getboard()
+    tab = zwrac.get("tablica")
+    adress = zwrac.get("adress")
 
+else:
+    tab = generujpusta(game.nx, game.ny)
 
 
 while running == 1:
@@ -49,12 +55,13 @@ while running == 1:
             running = 0
 
     pygame.display.flip()
-if game.scanforwin(tab) == 0:
-    screen.fill((50, 50, 50))
-elif game.scanforwin(tab) == -1:
-    screen.fill((100, 100, 100))
+    if(IS_MULTI == 1):
+        running = getloss()-2
 
-
+if running == -2 or running == -1:
+    print("won")
+if running == 0 :
+    print("lost")
 pygame.display.flip()
 time.sleep(5)
 
