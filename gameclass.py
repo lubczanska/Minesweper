@@ -22,5 +22,10 @@ class Gamesettings:
                     opencells += 1
         if flaggedbombs == self.n and opencells == len(tab) * len(tab[0]):
             return 0
+
+        for a in tab:
+            for b in a:
+                if b == 19:
+                    return -1
         else:
             return 1

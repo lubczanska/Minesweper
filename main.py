@@ -4,9 +4,11 @@ from planszator import generujtablice, generujpusta
 from printplansza import printplanszeszybko
 from gameclass import Gamesettings
 import pygame
+IS_MULTI = 0
+
 nx = 16
 ny = 16
-n = 4
+n = 30
 
 game = Gamesettings(nx, ny, n, 30, 30, 16, 16)
 
@@ -21,6 +23,12 @@ screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))
 running = 1
 
 fclick = 1
+
+if IS_MULTI == 1:
+    fclick = 0
+
+
+
 while running == 1:
     for a in range(nx):
         for b in range(ny):
@@ -41,7 +49,12 @@ while running == 1:
             running = 0
 
     pygame.display.flip()
-screen.fill((50,50,50))
+if game.scanforwin(tab) == 0:
+    screen.fill((50, 50, 50))
+elif game.scanforwin(tab) == -1:
+    screen.fill((100, 100, 100))
+
+
 pygame.display.flip()
 time.sleep(5)
-print("wygrales")
+
