@@ -7,9 +7,8 @@ def generujpusta(x,y):
 def generujtablice(n, x, y, bx, by):
 
     tab = [[0 for i in range(x)] for j in range(y)]
-    #tutaj tworzymy naszą tablicę, o rozmiarach takich jakie mają być za pomocą list comprehension
-    rx = random.randint(0, x-1)
-    ry = random.randint(0, y-1)
+
+
 
     for i in range(n):
         rx = random.randint(0, x - 1)
@@ -44,7 +43,7 @@ def generujtablice(n, x, y, bx, by):
                     times += 1
                     if tab[i+k][j+l] == 9 and tab[i][j] != 9:
                         bsum += 1
-            if bsum > 0 and tab[i][j] !=9:
+            if bsum > 0 and tab[i][j] != 9:
                 tab[i][j] = bsum
 
     return tab

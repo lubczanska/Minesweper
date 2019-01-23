@@ -4,9 +4,6 @@ from planszator import generujtablice, generujpusta
 from printplansza import printplanszeszybko
 from gameclass import Gamesettings
 import pygame
-from clientudp import getboard, getloss, sendwin
-import json
-IS_MULTI = 1
 
 nx = 15
 ny = 15
@@ -26,16 +23,10 @@ running = 1
 
 fclick = 1
 
-if IS_MULTI == 1:
-    fclick = 0
-    zwrac = getboard()
-    tab1 = zwrac["tablica"]
-    tab = tab1[:]
-    print(tab)
-    adress = zwrac.get("adress")
 
-else:
-    tab = generujpusta(game.nx, game.ny)
+
+
+tab = generujpusta(game.nx, game.ny)
 
 
 clock = pygame.time.Clock()
@@ -52,19 +43,7 @@ while running == 1:
 
     running = game.scanforwin(tab)
 
-    if IS_MULTI == 1:
-        running = getloss()
-        if(game.scanforwin(tab) == 0):
-            print("won")
-            sendwin(adress, 0)
-            running = -1
-            break
-        elif(game.scanforwin(tab) == -1):
-            sendwin(adress, 1)
 
-            print("lost")
-            running = 0
-            break
     for event in pygame.event.get():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
