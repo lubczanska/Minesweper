@@ -39,7 +39,7 @@ def getwinner(addr1, addr2):
 if __name__ == '__main__':
 
 
-    adressclienta1 = "192.168.0.1"
+    adressclienta1 = "10.121.1.75"
     adressclienta2 = "192.168.0.1"
     tab = generujtablice(30, 15, 15, 0, 0)
     distributetable(tab, adressclienta1, adressclienta2)

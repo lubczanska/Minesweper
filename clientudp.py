@@ -25,7 +25,8 @@ def getboard():
 def sendwin(adrr, a):
     UDP_PORT = 5555
     sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)  # UDP
-    sock.sendto(a.encode(), (adrr, UDP_PORT))
+    b = str(a)
+    sock.sendto(b, (adrr, UDP_PORT))
 
 def getloss():
     UDP_IP = "0.0.0.0"

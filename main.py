@@ -12,7 +12,7 @@ nx = 15
 ny = 15
 n = 30
 
-game = Gamesettings(nx, ny, n, 30, 30, 16, 16)
+game = Gamesettings(nx, ny, n, 30, 30, 15, 15)
 
 
 
@@ -52,17 +52,19 @@ while running == 1:
 
     running = game.scanforwin(tab)
 
+    if IS_MULTI == 1:
+        running = getloss()
+        if(game.scanforwin(tab) == 0):
+            print("won")
+            sendwin(adress, 0)
+            running = -1
+            break
+        elif(game.scanforwin(tab) == -1):
+            sendwin(adress, 1)
 
-    running = getloss()
-    if(game.scanforwin()== 0):
-        print("won")
-        sendwin(adress, 0)
-        break
-    elif(game.scanforwin() == -1):
-        sendwin(adress, 1)
-
-        print("lost")
-        break
+            print("lost")
+            running = 0
+            break
     for event in pygame.event.get():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -71,10 +73,8 @@ while running == 1:
             fclick = 0
         if event.type == pygame.QUIT:
             running = 0
-
     pygame.display.flip()
-    if running == 0 or running == 2:
-        break
+
 
 
 
