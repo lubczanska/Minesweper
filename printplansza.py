@@ -2,7 +2,7 @@ import pygame
 from gameclass import Gamesettings
 
 
-def printplanszeszybko (tab, x_coord, y_coord,screen, game):
+def printplanszeszybko (tab, x_coord, y_coord, screen, game):
 
     closed = pygame.image.load("images/blank.gif")
     closed.convert()
@@ -70,7 +70,7 @@ def printplanszeszybko (tab, x_coord, y_coord,screen, game):
     elif tab[x_coord][y_coord] == 10:
         screen.blit(open0,  (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] > 19:
-        screen.blit(flaga,(16*x_coord + game.borderleft, 16* y_coord + game.bordertop   ))
+        screen.blit(flaga, (16*x_coord + game.borderleft, 16* y_coord + game.bordertop))
 
 def printborder (screen, game):
 

@@ -1,5 +1,6 @@
 import pygame
 from gameclass import Gamesettings
+import math
 from odkrywane import pokazpuste, pokazbomby
 from planszator import generujtablice
 def leftclick(lclick,tab):
@@ -42,23 +43,25 @@ def eventuser(event, tab, fclick, game):
     
 
 
-    sizex = game.nx
-    sizey = game.ny
+    sizex = game.blocksizex
+    sizey = game.blocksizey
 
     if event.button == 1:
-        if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.bordertop):
-            lclick[0] = int((event.pos[0]-game.borderleft)//sizex)
-            lclick[1] = int((event.pos[1]-game.bordertop)//sizey)
+        if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
+            print((event.pos[0]-game.borderleft)/sizex)
+            lclick[0] = math.floor((event.pos[0]-game.borderleft)//sizex)
+            lclick[1] = math.floor((event.pos[1]-game.bordertop)//sizey)
 
             if(fclick == 1):
                 tab = generujtablice(game.n, sizex, sizey, lclick[0], lclick[1])
             tab = leftclick(lclick, tab)
+
             print(tab)
         else:
             print("somthing")
 
     if event.button == 3:
-        if (event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex - game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey - game.bordertop):
+        if (event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex - game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey - game.borderleft):
             rclick[0] = int((event.pos[0]-game.borderleft)//sizex)
             rclick[1] = int((event.pos[1]-game.bordertop)//sizey)
             if(fclick == 1):

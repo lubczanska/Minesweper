@@ -7,10 +7,10 @@ import pygame
 
 nx = 15
 ny = 15
-n = 30
+n = 10
 
 
-game = Gamesettings(nx, ny, n, 30, 30, 15, 15)
+game = Gamesettings(nx, ny, n, 55, 12, 16, 16)
 
 
 
@@ -26,19 +26,21 @@ running = 1
 fclick = 1
 
 
-printborder(screen, game)
+
 
 tab = generujpusta(game.nx, game.ny)
 
+screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))
+
+
+pygame.display.flip()
 
 clock = pygame.time.Clock()
 
 while running == 1:
-    clock.tick(60)
-    for a in range(game.nx):
-        for b in range(game.ny):
 
-            printplanszeszybko(tab, a, b, screen, game)
+    clock.tick(60)
+
 
 
 
@@ -54,6 +56,13 @@ while running == 1:
             fclick = 0
         if event.type == pygame.QUIT:
             running = 0
+    for a in range(len(tab)):
+
+        for b in range(len(tab[0])):
+
+            printplanszeszybko(tab, a, b, screen, game)
+
+    printborder(screen, game)
     pygame.display.flip()
 
 

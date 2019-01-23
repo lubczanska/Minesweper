@@ -1,12 +1,12 @@
 class Gamesettings:
     def __init__(self, nx, ny, n, bordertop, borderleft, blocksizex, blocksizey):
-        self.nx = nx
-        self.ny = ny
+        self.nx = nx + 1
+        self.ny = ny + 1
         self.n = n
         self.borderleft = borderleft
         self.bordertop = bordertop
-        self.windowsizex = borderleft*2 + self.nx*blocksizex
-        self.windowsizey = bordertop*2 + self.nx*blocksizey
+        self.windowsizex = self.nx*blocksizex + 24
+        self.windowsizey = self.nx*blocksizey + 55+12
         self.blocksizex = blocksizex
         self.blocksizey = blocksizey
         self.wall = self.windowsizey - self.ny * self.blocksizey
@@ -18,7 +18,7 @@ class Gamesettings:
             for b in a:
                 if b == 29:
                     flaggedbombs += 1
-                if b > 9 :
+                if b > 9:
                     opencells += 1
         if opencells == (len(tab) * len(tab[0])-self.n):
             return 0
