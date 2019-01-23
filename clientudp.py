@@ -22,10 +22,10 @@ def getboard():
     return zwracanie
 
 
-def sendwin(adrr):
+def sendwin(adrr, a):
     UDP_PORT = 5555
     sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)  # UDP
-    sock.sendto("ja".encode(), (adrr, UDP_PORT))
+    sock.sendto(a.encode(), (adrr, UDP_PORT))
 
 def getloss():
     UDP_IP = "0.0.0.0"
@@ -38,6 +38,9 @@ def getloss():
 
     try:
         data, addr = sock.recvfrom(1024)
-        return 0
+        if data.decode() == 1:
+            return 0
+        elif data.decode == 0:
+            return 2
     except socket.error:
         return 1

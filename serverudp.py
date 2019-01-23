@@ -10,10 +10,10 @@ def distributetable(tab, addr1, addr2):
     sock.sendto(data.encode(), (addr1, UDP_PORT))
     sock.sendto(data.encode(), (addr2, UDP_PORT))
 
-def showlooser(addr):
+def showlooser(addr, winorlost):
     UDP_PORT = 5555
     sock = socket.socket(socket.AF_INET,socket.SOCK_DGRAM)  # UDP
-    sock.sendto("lost".encode(), (addr, UDP_PORT))
+    sock.sendto(winorlost.encode(), (addr, UDP_PORT))
 
 def getwinner(addr1, addr2):
     UDP_IP = "0.0.0.0"
@@ -25,13 +25,17 @@ def getwinner(addr1, addr2):
 
     while True:
         data, addr = sock.recvfrom(1024) # buffer size is 1024 bytes
-        if addr == addr1:
-            showlooser(addr2)
+        if addr == addr1 and data.decode() == 0:
+            showlooser(addr2, 1)
             break
-        if addr == addr2:
-            showlooser(addr1)
-            break
+        elif addr == addr1 and data.decode() == 1:
+            showlooser(addr2, 0)
 
+        elif addr == addr2 and data.decode() == 0:
+            showlooser(addr1, 1)
+            break
+        elif addr == addr2 and data.decode() == 1:
+            showlooser(addr1, 0)
 if __name__ == '__main__':
 
 

@@ -4,7 +4,7 @@ from planszator import generujtablice, generujpusta
 from printplansza import printplanszeszybko
 from gameclass import Gamesettings
 import pygame
-from clientudp import getboard, getloss
+from clientudp import getboard, getloss, sendwin
 import json
 IS_MULTI = 1
 
@@ -52,8 +52,17 @@ while running == 1:
 
     running = game.scanforwin(tab)
 
+
     running = getloss()
-    
+    if(game.scanforwin()== 0):
+        print("won")
+        sendwin(adress, 0)
+        break
+    elif(game.scanforwin() == -1):
+        sendwin(adress, 1)
+
+        print("lost")
+        break
     for event in pygame.event.get():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -64,13 +73,14 @@ while running == 1:
             running = 0
 
     pygame.display.flip()
-    if(IS_MULTI == 1) and running != 1:
-        running = getloss()-2
+    if running == 0 or running == 2:
+        break
 
-if running == -2 or running == -1:
-    print("won")
-if running == 0 :
-    print("lost")
+
+
+
+
+
 pygame.display.flip()
 time.sleep(2)
 
