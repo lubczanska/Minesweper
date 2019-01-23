@@ -2,11 +2,13 @@ import pygame
 from gameclass import Gamesettings
 from odkrywane import pokazpuste, pokazbomby
 from planszator import generujtablice
+
+
 def leftclick(lclick,tab):
-    if(tab[lclick[0]][lclick[1]] >= 20):
+    if tab[lclick[0]][lclick[1]] >= 20:
         tab[lclick[0]][lclick[1]] -= 20
 
-    elif (tab[lclick[0]][lclick[1]] == 9):
+    elif tab[lclick[0]][lclick[1]] == 9:
         tab = pokazbomby(tab)
         return tab
     elif tab[lclick[0]][lclick[1]] > 0 and tab[lclick[0]][lclick[1]] < 10:
@@ -15,17 +17,13 @@ def leftclick(lclick,tab):
         tab = pokazpuste(tab, lclick[0], lclick[1])
     return tab
     
-
-
-
-
-
-
+    
 def rightclick(rclick,tab):
     if tab[rclick[0]][rclick[1]] < 10:
-        tab[rclick[0]][rclick[1]]+=20
+        tab[rclick[0]][rclick[1]] += 20
+    elif tab[lclick[0]][lclick[1]] >= 20:
+        tab[lclick[0]][lclick[1]] -= 20
     return tab
-
 
 
 def eventuser(event, tab, fclick, game):
@@ -36,11 +34,6 @@ def eventuser(event, tab, fclick, game):
     for x in range(2):
         lclick.append(x)
         rclick.append(x)
-
-
-
-    
-
 
     sizex = game.nx
     sizey = game.ny
@@ -65,10 +58,4 @@ def eventuser(event, tab, fclick, game):
         else:
             print("somethingsomethinghere")
 
-
     return tab
-
-
-
-
-
