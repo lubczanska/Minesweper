@@ -1,7 +1,7 @@
 from klikato import eventuser
 import time
 from planszator import generujtablice, generujpusta
-from printplansza import printplanszeszybko
+from printplansza import printplanszeszybko, printborder
 from gameclass import Gamesettings
 import pygame
 IS_MULTI = 0
@@ -27,7 +27,7 @@ fclick = 1
 if IS_MULTI == 1:
     fclick = 0
 
-
+printborder(screen, game)
 
 while running == 1:
     for a in range(nx):
