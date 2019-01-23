@@ -26,8 +26,11 @@ def printplanszeszybko (tab, x_coord, y_coord,screen, game):
     open8.convert()
     bomb = pygame.image.load("images/bombrevealed.gif")
     bomb.convert()
+    bombdeath = pygame.image.load("images/bombdeath.gif")
+    bombdeath.convert()
     flaga = pygame.image.load("images/bombflagged.gif")
     flaga.convert()
+
     # 0-9 - nie wciśnięte wgle
     # 10 - wcisnięty pusty
     # 11 - 18 wciśnięte, widać co jest
@@ -69,5 +72,36 @@ def printplanszeszybko (tab, x_coord, y_coord,screen, game):
     elif tab[x_coord][y_coord] > 19:
         screen.blit(flaga,(16*x_coord + game.borderleft, 16* y_coord + game.bordertop   ))
 
+def printborder (screen, game):
 
+    top_left = pygame.image.load("images/top_left.gif")
+    top_left.convert()
+    top_middle = pygame.image.load("images/top_middle.gif")
+    top_middle.convert()
+    top_right = pygame.image.load("images/top_right.gif")
+    top_right.convert()
+    side_left = pygame.image.load("images/side_left.gif")
+    side_left.convert()
+    side_right = pygame.image.load("images/side_right.gif")
+    side_right.convert()
+    bottom_left = pygame.image.load("images/bottom_left.gif")
+    bottom_left.convert()
+    bottom_middle = pygame.image.load("images/bottom_middle.gif")
+    bottom_middle.convert()
+    bottom_right = pygame.image.load("images/bottom_right.gif")
+    bottom_right.convert()
+    smile = pygame.image.load("images/crying_laughing.gif")
+    smile.convert()
 
+    screen.blit(top_left, (0, 0))
+    for a in range(game.nx - 6):
+        screen.blit(top_middle, (16 * a + game.borderleft + 16 * 3, 0))
+    screen.blit(top_right, (16 * game.nx - 16 * 3 + game.borderleft, 0))
+    for b in range(game.ny):
+        screen.blit(side_left, (0, 16 * b + game.bordertop))
+        screen.blit(side_right, (16 * game.nx + game.borderleft, 16 * b + game.bordertop))
+    screen.blit(bottom_left, (0, 16 * game.nx + game.bordertop))
+    for a in range(game.nx):
+        screen.blit(bottom_middle, (16 * a + game.borderleft, 16 * game.nx + game.bordertop))
+    screen.blit(bottom_right, (16 * game.nx + game.borderleft, 16 * game.nx + game.bordertop))
+    screen.blit(smile, (game.nx * 8 - 1, 16))

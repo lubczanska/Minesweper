@@ -1,7 +1,7 @@
 from klikato import eventuser
 import time
 from planszator import generujtablice, generujpusta
-from printplansza import printplanszeszybko
+from printplansza import printplanszeszybko, printborder
 from gameclass import Gamesettings
 import pygame
 
@@ -9,7 +9,9 @@ nx = 15
 ny = 15
 n = 30
 
+
 game = Gamesettings(nx, ny, n, 30, 30, 15, 15)
+
 
 
 
@@ -24,7 +26,7 @@ running = 1
 fclick = 1
 
 
-
+printborder(screen, game)
 
 tab = generujpusta(game.nx, game.ny)
 
