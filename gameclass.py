@@ -16,8 +16,6 @@ class Gamesettings:
         opencells = 0
         for a in tab:
             for b in a:
-                if b == 29:
-                    flaggedbombs += 1
                 if b > 9:
                     opencells += 1
         if opencells == (len(tab) * len(tab[0])-self.n):
