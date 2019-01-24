@@ -5,48 +5,39 @@ def generujpusta(x,y):
     return tab
 
 def generujtablice(n, x, y, bx, by):
-
-    tab = [[0 for i in range(x)] for j in range(y)]
-
-
+    #generowanie pustej tablicy
+    tab = generujpusta(x, y)
 
     for i in range(n):
+        # losowanie koordynatow bomby
         rx = random.randint(0, x - 1)
         ry = random.randint(0, y - 1)
-        if rx == bx and ry == by:
+
+        #sprawdzanie czy wylosowane koordynaty nie sa pod klikiem lub nie zawieraja bomby
+        while rx == bx and ry == by and tab[rx][ry] == 9:
             rx = random.randint(0, x - 1)
             ry = random.randint(0, y - 1)
+
+        # wstawianie bomby na kordynaty
         tab[rx][ry] = 9
 
-    for i in range(x):
-
-        for j in range(y):
-            times = 0
-            bsum = 0
-            topborder = 1
-            bottomborder = -1
-            leftborder = -1
-            rightborder = 1
-            
-            if i == x-1:
-                rightborder = 0
-            if i == 0:
-                leftborder = 0
-            if j == y-1:
-                topborder = 0
-                
-            if j == 0:
-                bottomborder = 0
-
-            for k in range(leftborder, rightborder+1):
-                for l in range(bottomborder, topborder+1):
-                    times += 1
-                    if tab[i+k][j+l] == 9 and tab[i][j] != 9:
-                        bsum += 1
-            if bsum > 0 and tab[i][j] != 9:
-                tab[i][j] = bsum
+        #zwiekszanie znacznikow naookolo bomby
+        if rx > 0 and tab[rx - 1][ry] < 9:
+            tab[rx - 1][ry] += 1
+        if rx < x - 1 and tab[rx + 1][ry] < 9:
+            tab[rx + 1][ry] += 1
+        if ry > 0 and tab[rx][ry - 1]< 9:
+            tab[rx][ry - 1] += 1
+        if ry < y - 1 and tab[rx][ry + 1] < 9:
+            tab[rx][ry + 1] += 1
+        if rx > 0 and ry > 0 and tab[rx - 1][ry - 1] < 9:
+            tab[rx - 1][ry - 1] += 1
+        if rx < x - 1 and ry > 0 and tab[rx + 1][ry - 1] < 9:
+            tab[rx + 1][ry - 1] += 1
+        if rx > 0 and ry < y - 1 and tab[rx - 1][ry + 1] < 9:
+            tab[rx - 1][ry + 1] += 1
+        if rx < x - 1 and ry < y - 1 and tab[rx + 1][ry + 1] < 9:
+            tab[rx + 1][ry + 1] += 1
 
     return tab
-
-
 

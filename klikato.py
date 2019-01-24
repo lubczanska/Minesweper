@@ -3,11 +3,12 @@ from gameclass import Gamesettings
 import math
 from odkrywane import pokazpuste, pokazbomby
 from planszator import generujtablice
-def leftclick(lclick,tab):
-    if(tab[lclick[0]][lclick[1]] >= 20):
-        tab[lclick[0]][lclick[1]] -= 20
 
-    elif (tab[lclick[0]][lclick[1]] == 9):
+
+def leftclick(lclick,tab):
+    if tab[lclick[0]][lclick[1]] >= 20:
+        tab[lclick[0]][lclick[1]] -= 20
+    elif tab[lclick[0]][lclick[1]] == 9:
         tab = pokazbomby(tab)
         return tab
     elif tab[lclick[0]][lclick[1]] > 0 and tab[lclick[0]][lclick[1]] < 10:
@@ -16,17 +17,13 @@ def leftclick(lclick,tab):
         tab = pokazpuste(tab, lclick[0], lclick[1])
     return tab
     
-
-
-
-
-
-
+    
 def rightclick(rclick,tab):
     if tab[rclick[0]][rclick[1]] < 10:
-        tab[rclick[0]][rclick[1]]+=20
+        tab[rclick[0]][rclick[1]] += 20
+    elif tab[lclick[0]][lclick[1]] >= 20:
+        tab[lclick[0]][lclick[1]] -= 20
     return tab
-
 
 
 def eventuser(event, tab, fclick, game):
@@ -38,13 +35,9 @@ def eventuser(event, tab, fclick, game):
         lclick.append(x)
         rclick.append(x)
 
-
-
-    
-
-
     sizex = game.blocksizex
     sizey = game.blocksizey
+
 
     if event.button == 1:
         if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
@@ -70,10 +63,4 @@ def eventuser(event, tab, fclick, game):
         else:
             print("somethingsomethinghere")
 
-
     return tab
-
-
-
-
-

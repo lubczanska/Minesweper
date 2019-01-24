@@ -20,7 +20,9 @@ class Gamesettings:
                     flaggedbombs += 1
                 if b > 9:
                     opencells += 1
-        if opencells == (len(tab) * len(tab[0])-self.n):
+
+        #if flaggedbombs == self.n and opencells == len(tab) * len(tab[0]):
+        if opencells + self.n == len(tab) * len(tab[0]):
             return 0
 
 
