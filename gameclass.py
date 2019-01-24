@@ -2,6 +2,7 @@ class Gamesettings:
     def __init__(self, nx, ny, n, bordertop, borderleft, blocksizex, blocksizey):
         self.nx = nx + 1
         self.ny = ny + 1
+        self.clicks = 0
         self.n = n
         self.borderleft = borderleft
         self.bordertop = bordertop
