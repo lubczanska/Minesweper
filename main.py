@@ -1,16 +1,21 @@
 from klikato import eventuser
 from timeit import default_timer as timer
-import time
 from planszator import generujtablice, generujpusta
 from printplansza import printplanszeszybko, printborder, printcyferki, smileconverter
 from gameclass import Gamesettings
 import pygame
 
-nx = 7
-ny = 7
-n = 4
+nx = 15
+ny = 15
+n = 20
+
 
 game = Gamesettings(nx, ny, n, 55, 12, 16, 16)
+
+
+
+
+
 
 pygame.init()
 
@@ -19,6 +24,9 @@ screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))
 running = 1
 
 fclick = 1
+
+
+
 
 tab = generujpusta(game.nx, game.ny)
 
@@ -33,9 +41,9 @@ start = timer()
 
 while running == 1:
 
-    end = timer()
-    end = int(end - start)
-    #print(game.clicks)
+    time = timer()
+    time = int(time - start)
+    print(game.clicks)
     clock.tick(30)
 
 
@@ -58,7 +66,7 @@ while running == 1:
 
     printborder(screen, game)
     printcyferki(0, game.clicks, screen, game)
-    printcyferki(1, end, screen, game)
+    printcyferki(1, time, screen, game)
     smileconverter(screen, running, game)
     pygame.display.flip()
 
