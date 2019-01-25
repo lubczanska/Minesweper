@@ -72,6 +72,26 @@ def printplanszeszybko (tab, x_coord, y_coord, screen, game):
     elif tab[x_coord][y_coord] > 19:
         screen.blit(flaga, (16*x_coord + game.borderleft, 16* y_coord + game.bordertop))
 
+def smileconverter(screen, a, game):
+
+    won = pygame.image.load("images/facewin.gif")
+    won.convert()
+    lost = pygame.image.load("images/facedead.gif")
+    lost.convert()
+    smile = pygame.image.load("images/crying_laughing.gif")
+    smile.convert()
+    if(a == 1):
+        screen.blit(smile, (game.nx * 8 - 1, 15))
+    elif(a == 0):
+        screen.blit(won, (game.nx * 8 - 1, 15))
+    elif(a == -1):
+        screen.blit(lost, (game.nx * 8 - 1, 15))
+
+
+
+
+
+
 def printborder (screen, game):
 
     top_left = pygame.image.load("images/top_left.gif")
@@ -104,4 +124,63 @@ def printborder (screen, game):
     for a in range(game.nx):
         screen.blit(bottom_middle, (16 * a + game.borderleft, 16 * game.nx + game.bordertop))
     screen.blit(bottom_right, (16 * game.nx + game.borderleft, 16 * game.nx + game.bordertop))
-    screen.blit(smile, (game.nx * 8 - 1, 16))
+    screen.blit(smile, (game.nx * 8 - 1, 15))
+    
+def printcyferki (side, input, screen, game):
+
+    time0 = pygame.image.load("images/time0.gif")
+    time0.convert()
+    time1 = pygame.image.load("images/time1.gif")
+    time1.convert()
+    time2 = pygame.image.load("images/time2.gif")
+    time2.convert()
+    time3 = pygame.image.load("images/time3.gif")
+    time3.convert()
+    time4 = pygame.image.load("images/time4.gif")
+    time4.convert()
+    time5 = pygame.image.load("images/time5.gif")
+    time5.convert()
+    time6 = pygame.image.load("images/time6.gif")
+    time6.convert()
+    time7 = pygame.image.load("images/time7.gif")
+    time7.convert()
+    time8 = pygame.image.load("images/time8.gif")
+    time8.convert()
+    time9 = pygame.image.load("images/time9.gif")
+    time9.convert()
+    # 13 x 23 px, (16 * game.nx - 16 * 3 + game.borderleft + 2  , 16)
+
+    if side == 1:
+        print_side = 16 * game.nx - 16 * 3 + game.borderleft + 2
+    else:
+        print_side = 17
+
+    number = []
+    number.append(input // 100)
+    input = input  % 100
+    number.append(input // 10)
+    input = input % 10
+    number.append(input)
+    i = 0
+    for a in number:
+        if a == 0:
+            screen.blit(time0, (print_side + 13 * i, 16))
+        elif a == 1:
+            screen.blit(time1, (print_side + 13 * i, 16))
+        elif a == 2:
+            screen.blit(time2, (print_side + 13 * i, 16))
+        elif a == 3:
+            screen.blit(time3, (print_side + 13 * i, 16))
+        elif a == 4:
+            screen.blit(time4, (print_side + 13 * i, 16))
+        elif a == 5:
+            screen.blit(time5, (print_side + 13 * i, 16))
+        elif a == 6:
+            screen.blit(time6, (print_side + 13 * i, 16))
+        elif a == 7:
+            screen.blit(time7, (print_side + 13 * i, 16))
+        elif a == 8:
+            screen.blit(time8, (print_side + 13 * i, 16))
+        elif a == 9:
+            screen.blit(time9, (print_side + 13 * i, 16))
+        i = i + 1
