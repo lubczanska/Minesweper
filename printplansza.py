@@ -38,6 +38,8 @@ def printplanszeszybko (tab, x_coord, y_coord, screen, game):
 
     if tab[x_coord][y_coord] == 0:
         screen.blit(closed, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
+    elif tab[x_coord][y_coord] == 9 and game.bombsvisible:
+        screen.blit(bomb, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 11:
         screen.blit(open1, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 12:
@@ -54,8 +56,6 @@ def printplanszeszybko (tab, x_coord, y_coord, screen, game):
         screen.blit(open7, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 18:
         screen.blit(open8, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
-    elif tab[x_coord][y_coord] == 19:
-        screen.blit(bomb, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] >= 0 and tab[x_coord][y_coord] <=9:
         screen.blit(closed, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 10:

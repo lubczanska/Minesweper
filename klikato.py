@@ -1,5 +1,5 @@
 import math
-from odkrywane import pokazpuste, pokazbomby
+from  odkrywane import odkrywajtablice
 from planszator import generujtablice
 
 def leftclick(lclick,tab,game):
@@ -9,12 +9,11 @@ def leftclick(lclick,tab,game):
     if tab[lclick[0]][lclick[1]] >= 20:
         tab[lclick[0]][lclick[1]] -= 20
     elif tab[lclick[0]][lclick[1]] == 9:
-        tab = pokazbomby(tab)
-        return tab
+        game.bombsvisible = True
     elif tab[lclick[0]][lclick[1]] > 0 and tab[lclick[0]][lclick[1]] < 10:
         tab[lclick[0]][lclick[1]] += 10
     else:
-        tab = pokazpuste(tab, lclick[0], lclick[1])
+        tab = odkrywajtablice(tab, lclick[0], lclick[1])
 
     return tab
 
