@@ -2,31 +2,33 @@ import pygame
 
 def printplanszeszybko (tab, x_coord, y_coord, screen, game):
 
-    closed = pygame.image.load("images/blank.gif")
+    path = "images/" + game.theme + "/"
+
+    closed = pygame.image.load(path + "blank.gif")
     closed.convert()
-    open0 = pygame.image.load("images/open0.gif")
+    open0 = pygame.image.load(path + "open0.gif")
     open0.convert()
-    open1 = pygame.image.load("images/open1.gif")
+    open1 = pygame.image.load(path + "open1.gif")
     open1.convert()
-    open2 = pygame.image.load("images/open2.gif")
+    open2 = pygame.image.load(path + "open2.gif")
     open2.convert()
-    open3 = pygame.image.load("images/open3.gif")
+    open3 = pygame.image.load(path + "open3.gif")
     open3.convert()
-    open4 = pygame.image.load("images/open4.gif")
+    open4 = pygame.image.load(path + "open4.gif")
     open4.convert()
-    open5 = pygame.image.load("images/open5.gif")
+    open5 = pygame.image.load(path + "open5.gif")
     open5.convert()
-    open6 = pygame.image.load("images/open6.gif")
+    open6 = pygame.image.load(path + "open6.gif")
     open6.convert()
-    open7 = pygame.image.load("images/open7.gif")
+    open7 = pygame.image.load(path + "open7.gif")
     open7.convert()
-    open8 = pygame.image.load("images/open8.gif")
+    open8 = pygame.image.load(path + "open8.gif")
     open8.convert()
-    bomb = pygame.image.load("images/bombrevealed.gif")
+    bomb = pygame.image.load(path + "bombrevealed.gif")
     bomb.convert()
-    bombdeath = pygame.image.load("images/bombdeath.gif")
+    bombdeath = pygame.image.load(path + "bombdeath.gif")
     bombdeath.convert()
-    flaga = pygame.image.load("images/bombflagged.gif")
+    flaga = pygame.image.load(path + "bombflagged.gif")
     flaga.convert()
 
     # 0-9 - nie wciśnięte wgle
@@ -65,11 +67,13 @@ def printplanszeszybko (tab, x_coord, y_coord, screen, game):
 
 def smileconverter(screen, a, game):
 
-    won = pygame.image.load("images/facewin.gif")
+    path = "images/" + game.theme + "/"
+
+    won = pygame.image.load(path + "facewin.gif")
     won.convert()
-    lost = pygame.image.load("images/facedead.gif")
+    lost = pygame.image.load(path + "facedead.gif")
     lost.convert()
-    smile = pygame.image.load("images/crying_laughing.gif")
+    smile = pygame.image.load(path + "crying_laughing.gif")
     smile.convert()
     if(a == 1):
         screen.blit(smile, (game.nx * 8 - 1, 15))
@@ -80,23 +84,25 @@ def smileconverter(screen, a, game):
 
 def printborder (screen, game):
 
-    top_left = pygame.image.load("images/top_left.gif")
+    path = "images/" + game.theme + "/"
+
+    top_left = pygame.image.load(path + "top_left.gif")
     top_left.convert()
-    top_middle = pygame.image.load("images/top_middle.gif")
+    top_middle = pygame.image.load(path + "top_middle.gif")
     top_middle.convert()
-    top_right = pygame.image.load("images/top_right.gif")
+    top_right = pygame.image.load(path + "top_right.gif")
     top_right.convert()
-    side_left = pygame.image.load("images/side_left.gif")
+    side_left = pygame.image.load(path + "side_left.gif")
     side_left.convert()
-    side_right = pygame.image.load("images/side_right.gif")
+    side_right = pygame.image.load(path + "side_right.gif")
     side_right.convert()
-    bottom_left = pygame.image.load("images/bottom_left.gif")
+    bottom_left = pygame.image.load(path + "bottom_left.gif")
     bottom_left.convert()
-    bottom_middle = pygame.image.load("images/bottom_middle.gif")
+    bottom_middle = pygame.image.load(path + "bottom_middle.gif")
     bottom_middle.convert()
-    bottom_right = pygame.image.load("images/bottom_right.gif")
+    bottom_right = pygame.image.load(path + "bottom_right.gif")
     bottom_right.convert()
-    smile = pygame.image.load("images/crying_laughing.gif")
+    smile = pygame.image.load(path + "crying_laughing.gif")
     smile.convert()
 
     screen.blit(top_left, (0, 0))
@@ -114,25 +120,27 @@ def printborder (screen, game):
 
 def printcyferki (side, input, screen, game):
 
-    time0 = pygame.image.load("images/time0.gif")
+    path = "images/" + game.theme + "/"
+
+    time0 = pygame.image.load(path + "time0.gif")
     time0.convert()
-    time1 = pygame.image.load("images/time1.gif")
+    time1 = pygame.image.load(path + "time1.gif")
     time1.convert()
-    time2 = pygame.image.load("images/time2.gif")
+    time2 = pygame.image.load(path + "time2.gif")
     time2.convert()
-    time3 = pygame.image.load("images/time3.gif")
+    time3 = pygame.image.load(path + "time3.gif")
     time3.convert()
-    time4 = pygame.image.load("images/time4.gif")
+    time4 = pygame.image.load(path + "time4.gif")
     time4.convert()
-    time5 = pygame.image.load("images/time5.gif")
+    time5 = pygame.image.load(path + "time5.gif")
     time5.convert()
-    time6 = pygame.image.load("images/time6.gif")
+    time6 = pygame.image.load(path + "time6.gif")
     time6.convert()
-    time7 = pygame.image.load("images/time7.gif")
+    time7 = pygame.image.load(path + "time7.gif")
     time7.convert()
-    time8 = pygame.image.load("images/time8.gif")
+    time8 = pygame.image.load(path + "time8.gif")
     time8.convert()
-    time9 = pygame.image.load("images/time9.gif")
+    time9 = pygame.image.load(path + "time9.gif")
     time9.convert()
     # 13 x 23 px, (16 * game.nx - 16 * 3 + game.borderleft + 2  , 16)
 

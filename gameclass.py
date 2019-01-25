@@ -14,6 +14,7 @@ class Gamesettings:
         self.blocksizey = blocksizey
         self.wall = self.windowsizey - self.ny * self.blocksizey
         self.bombsvisible = False
+        self.theme = "light"
 
     def scanforwin(self, tab):
 
