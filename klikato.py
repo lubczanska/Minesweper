@@ -27,8 +27,8 @@ def leftclick(lclick,tab,game):
 def rightclick(rclick,tab):
     if tab[rclick[0]][rclick[1]] < 10:
         tab[rclick[0]][rclick[1]] += 20
-    elif tab[lclick[0]][lclick[1]] >= 20:
-        tab[lclick[0]][lclick[1]] -= 20
+    elif tab[rclick[0]][rclick[1]] >= 20:
+        tab[rclick[0]][rclick[1]] -= 20
     return tab
 
 
@@ -44,16 +44,17 @@ def eventuser(event, tab, fclick, game):
     sizex = game.blocksizex
     sizey = game.blocksizey
 
+    print("X: ", sizex, " Y: ", sizey)
 
     if event.button == 1:
 
         if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
-            print((event.pos[0]-game.borderleft)/sizex)
+            #print((event.pos[0]-game.borderleft)/sizex)
             lclick[0] = math.floor((event.pos[0]-game.borderleft)//sizex)
             lclick[1] = math.floor((event.pos[1]-game.bordertop)//sizey)
             game.clicks = game.clicks+1
             if(fclick == 1):
-                tab = generujtablice(game.n, sizex, sizey, lclick[0], lclick[1])
+                tab = generujtablice(game.n, game.nx, game.ny, lclick[0], lclick[1])
 
             tab = leftclick(lclick, tab, game)
 
