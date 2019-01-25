@@ -61,4 +61,3 @@ pygame.display.flip()
 
 pygame.display.flip()
 time.sleep(2)
-
