@@ -19,7 +19,7 @@ class Gamesettings:
         opencells = 0
         for a in tab:
             for b in a:
-                if b > 9:
+                if b > 9 and b < 20:
                     opencells += 1
 
         if opencells + self.n == len(tab) * len(tab[0]):
