@@ -2,6 +2,7 @@ class Gamesettings:
     def __init__(self, nx, ny, n, bordertop, borderleft, blocksizex, blocksizey):
         self.nx = nx + 1
         self.ny = ny + 1
+        self.clicks = 0
         self.n = n
         self.clicks = 0
         self.borderleft = borderleft
@@ -17,8 +18,6 @@ class Gamesettings:
         opencells = 0
         for a in tab:
             for b in a:
-                if b == 29:
-                    flaggedbombs += 1
                 if b > 9:
                     opencells += 1
 

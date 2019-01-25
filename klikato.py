@@ -46,11 +46,12 @@ def eventuser(event, tab, fclick, game):
 
 
     if event.button == 1:
+
         if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
             print((event.pos[0]-game.borderleft)/sizex)
             lclick[0] = math.floor((event.pos[0]-game.borderleft)//sizex)
             lclick[1] = math.floor((event.pos[1]-game.bordertop)//sizey)
-
+            game.clicks = game.clicks+1
             if(fclick == 1):
                 tab = generujtablice(game.n, sizex, sizey, lclick[0], lclick[1])
 
