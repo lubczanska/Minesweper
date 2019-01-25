@@ -6,9 +6,9 @@ from planszator import generujpusta
 from printplansza import printplanszeszybko, printborder, printcyferki, smileconverter
 from gameclass import Gamesettings
 
-nx = 15
-ny = 15
-n = 20
+nx = 7
+ny = 7
+n = 5
 
 game = Gamesettings(nx, ny, n, 55, 12, 16, 16)
 

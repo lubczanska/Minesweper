@@ -46,7 +46,7 @@ def eventuser(event, tab, fclick, game):
             lclick[1] = math.floor((event.pos[1]-game.bordertop)//sizey)
             game.clicks = game.clicks+1
             if(fclick == 1):
-                tab = generujtablice(game.n, sizex, sizey, lclick[0], lclick[1])
+                tab = generujtablice(game.n, game.nx, game.ny, lclick[0], lclick[1])
 
             tab = leftclick(lclick, tab, game)
 
