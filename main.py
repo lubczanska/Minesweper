@@ -32,7 +32,6 @@ while running == 1:
 
     end = timer()
     end = int(end - start)
-    print(game.clicks)
     clock.tick(30)
 
     running = game.scanforwin(tab)

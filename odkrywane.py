@@ -37,7 +37,6 @@ def pokazpuste(tab, x, y):
 
 def odkrywajtablice(tab, x, y):
 
-    print(tab[x][y])
     if tab[x][y] == 9:
         pokazbomby(tab)
     else:

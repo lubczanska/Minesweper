@@ -28,7 +28,6 @@ def rightclick(rclick,tab):
 
 def eventuser(event, tab, fclick, game):
 
-    print(event)
     lclick = []
     rclick = []
 
@@ -41,7 +40,6 @@ def eventuser(event, tab, fclick, game):
 
     if event.button == 1:
         if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
-            print((event.pos[0]-game.borderleft)/sizex)
             lclick[0] = math.floor((event.pos[0]-game.borderleft)//sizex)
             lclick[1] = math.floor((event.pos[1]-game.bordertop)//sizey)
             game.clicks = game.clicks+1
@@ -49,8 +47,6 @@ def eventuser(event, tab, fclick, game):
                 tab = generujtablice(game.n, game.nx, game.ny, lclick[0], lclick[1])
 
             tab = leftclick(lclick, tab, game)
-
-            print(tab)
         else:
             print("somthing")
 
