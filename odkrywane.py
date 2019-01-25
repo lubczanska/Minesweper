@@ -10,6 +10,7 @@ def pokazbomby(tab):
     return tab
 
 def pokazpuste(tab, x, y):
+
     if tab[x][y] == 0:
         tab[x][y] += 10
     elif tab[x][y] < 9:

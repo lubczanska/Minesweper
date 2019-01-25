@@ -5,15 +5,21 @@ from odkrywane import pokazpuste, pokazbomby
 from planszator import generujtablice
 
 
-def leftclick(lclick,tab):
+def leftclick(lclick,tab,game):
+    if(tab[lclick[0]][lclick[1]] < 10):
+        game.clicks = game.clicks + 1
     if tab[lclick[0]][lclick[1]] >= 20:
         tab[lclick[0]][lclick[1]] -= 20
+
     elif tab[lclick[0]][lclick[1]] == 9:
+
         tab = pokazbomby(tab)
         return tab
     elif tab[lclick[0]][lclick[1]] > 0 and tab[lclick[0]][lclick[1]] < 10:
+
         tab[lclick[0]][lclick[1]] += 10
     else:
+
         tab = pokazpuste(tab, lclick[0], lclick[1])
     return tab
     
@@ -47,7 +53,8 @@ def eventuser(event, tab, fclick, game):
 
             if(fclick == 1):
                 tab = generujtablice(game.n, sizex, sizey, lclick[0], lclick[1])
-            tab = leftclick(lclick, tab)
+
+            tab = leftclick(lclick, tab, game)
 
             print(tab)
         else:

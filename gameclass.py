@@ -3,6 +3,7 @@ class Gamesettings:
         self.nx = nx + 1
         self.ny = ny + 1
         self.n = n
+        self.clicks = 0
         self.borderleft = borderleft
         self.bordertop = bordertop
         self.windowsizex = self.nx*blocksizex + 24

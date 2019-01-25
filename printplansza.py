@@ -72,6 +72,26 @@ def printplanszeszybko (tab, x_coord, y_coord, screen, game):
     elif tab[x_coord][y_coord] > 19:
         screen.blit(flaga, (16*x_coord + game.borderleft, 16* y_coord + game.bordertop))
 
+def smileconverter(screen, a, game):
+
+    won = pygame.image.load("images/facewin.gif")
+    won.convert()
+    lost = pygame.image.load("images/facedead.gif")
+    lost.convert()
+    smile = pygame.image.load("images/crying_laughing.gif")
+    smile.convert()
+    if(a == 1):
+        screen.blit(smile, (game.nx * 8 - 1, 15))
+    elif(a == 0):
+        screen.blit(won, (game.nx * 8 - 1, 15))
+    elif(a == -1):
+        screen.blit(lost, (game.nx * 8 - 1, 15))
+
+
+
+
+
+
 def printborder (screen, game):
 
     top_left = pygame.image.load("images/top_left.gif")
