@@ -1,10 +1,12 @@
 import random
 
 def generujpusta(x,y):
+
     tab = [[0 for i in range(x)] for j in range(y)]
     return tab
 
 def generujtablice(n, x, y, bx, by):
+
     #generowanie pustej tablicy
     tab = generujpusta(x, y)
 

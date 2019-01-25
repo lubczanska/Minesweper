@@ -1,8 +1,5 @@
-
-from planszator import generujtablice
-
-
 def pokazbomby(tab):
+
     for i in range(len(tab)):
         for j in range(len(tab[0])):
             if tab[i][j] == 9:
@@ -38,15 +35,10 @@ def pokazpuste(tab, x, y):
 
     return tab
 
-
 def odkrywajtablice(tab, x, y):
+
     print(tab[x][y])
     if tab[x][y] == 9:
         pokazbomby(tab)
     else:
         pokazpuste(tab, x, y)
-
-
-
-
-

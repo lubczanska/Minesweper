@@ -1,6 +1,4 @@
 import pygame
-from gameclass import Gamesettings
-
 
 def printplanszeszybko (tab, x_coord, y_coord, screen, game):
 
@@ -37,13 +35,6 @@ def printplanszeszybko (tab, x_coord, y_coord, screen, game):
     # 19 - bomba kliknięta
     # 29 - bomba oflagowana
     # 20-28 - flaga
-    #
-    #
-    #
-    #
-    #
-    #
-    #
 
     if tab[x_coord][y_coord] == 0:
         screen.blit(closed, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
@@ -87,11 +78,6 @@ def smileconverter(screen, a, game):
     elif(a == -1):
         screen.blit(lost, (game.nx * 8 - 1, 15))
 
-
-
-
-
-
 def printborder (screen, game):
 
     top_left = pygame.image.load("images/top_left.gif")
@@ -125,7 +111,7 @@ def printborder (screen, game):
         screen.blit(bottom_middle, (16 * a + game.borderleft, 16 * game.nx + game.bordertop))
     screen.blit(bottom_right, (16 * game.nx + game.borderleft, 16 * game.nx + game.bordertop))
     screen.blit(smile, (game.nx * 8 - 1, 15))
-    
+
 def printcyferki (side, input, screen, game):
 
     time0 = pygame.image.load("images/time0.gif")
