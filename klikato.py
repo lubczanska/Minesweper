@@ -24,7 +24,7 @@ def rightclick(rclick,tab):
         tab[rclick[0]][rclick[1]] -= 20
     return tab
 
-def eventuser(event, tab, fclick, game):
+def eventuser(event, tab, game):
 
     lclick = []
     rclick = []
@@ -41,10 +41,10 @@ def eventuser(event, tab, fclick, game):
             lclick[0] = math.floor((event.pos[0]-game.borderleft)//sizex)
             lclick[1] = math.floor((event.pos[1]-game.bordertop )//sizey)
             game.clicks = game.clicks+1
-            if(fclick == 1):
+            if(game.fclick == 1):
                 tab = generujtablice(game.n, game.nx, game.ny, lclick[0], lclick[1])
                 game.starttime = timer()
-                print(game.starttime)
+                game.fclick = False
 
             tab = leftclick(lclick, tab, game)
         else:

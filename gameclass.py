@@ -18,6 +18,8 @@ class Gamesettings:
         self.bombsvisible = False
         self.theme = "light"
         self.starttime = 0
+        self.fclick = True
+        self.running = True
 
     def scanforwin(self, tab):
 
