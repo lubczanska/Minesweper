@@ -3,62 +3,47 @@ from  odkrywane import odkrywajtablice
 from planszator import generujtablice
 from timeit import default_timer as timer
 
-def leftclick(lclick,tab,game):
-
-    if tab[lclick[0]][lclick[1]] < 10:
+def leftclick(lclick, game):
+    if game.tab[lclick[0]][lclick[1]] < 10:
         game.clicks += 1
 
-    if tab[lclick[0]][lclick[1]] == 9:
+    if game.tab[lclick[0]][lclick[1]] == 9:
         game.bombsvisible = True
-    elif tab[lclick[0]][lclick[1]] > 0 and tab[lclick[0]][lclick[1]] < 10:
-        tab[lclick[0]][lclick[1]] += 10
+    elif game.tab[lclick[0]][lclick[1]] > 0 and game.tab[lclick[0]][lclick[1]] < 10:
+        game.tab[lclick[0]][lclick[1]] += 10
     else:
-        tab = odkrywajtablice(tab, lclick[0], lclick[1])
+        odkrywajtablice(game, lclick[0], lclick[1])
 
-    return tab
+def rightclick(rclick, game):
 
-def rightclick(rclick,tab):
+    if game.tab[rclick[0]][rclick[1]] < 10:
+        game.tab[rclick[0]][rclick[1]] += 20
+    elif game.tab[rclick[0]][rclick[1]] >= 20:
+        game.tab[rclick[0]][rclick[1]] -= 20
 
-    if tab[rclick[0]][rclick[1]] < 10:
-        tab[rclick[0]][rclick[1]] += 20
-    elif tab[rclick[0]][rclick[1]] >= 20:
-        tab[rclick[0]][rclick[1]] -= 20
-    return tab
-
-def eventuser(event, tab, game):
-
-    lclick = []
-    rclick = []
-
-    for x in range(2):
-        lclick.append(x)
-        rclick.append(x)
-
-    sizex = game.blocksizex
-    sizey = game.blocksizey
+def eventuser(event, game):
+    rclick = lclick = [0, 1]
 
     if event.button == 1:
         if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
-            lclick[0] = math.floor((event.pos[0]-game.borderleft)//sizex)
-            lclick[1] = math.floor((event.pos[1]-game.bordertop )//sizey)
+            lclick[0] = math.floor((event.pos[0]-game.borderleft)//game.blocksizex)
+            lclick[1] = math.floor((event.pos[1]-game.bordertop )//game.blocksizey)
 
             if(game.fclick == 1):
-                tab = generujtablice(game.n, game.nx, game.ny, lclick[0], lclick[1])
+                generujtablice(lclick[0], lclick[1], game)
                 game.starttime = timer()
                 game.fclick = False
 
-            tab = leftclick(lclick, tab, game)
+            leftclick(lclick, game)
         else:
             print("somthing")
 
     if event.button == 3:
         if (event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex - game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey - game.borderleft):
-            rclick[0] = int((event.pos[0]-game.borderleft)//sizex)
-            rclick[1] = int((event.pos[1]-game.bordertop)//sizey)
+            rclick[0] = int((event.pos[0]-game.borderleft)//game.blocksizex)
+            rclick[1] = int((event.pos[1]-game.bordertop)//game.blocksizey)
             if(game.fclick == 1):
-                tab = generujtablice(game.n, sizex, sizey, lclick[0], lclick[1])
-            tab = rightclick(rclick, tab)
+                game.tab = generujtablice(lclick[0], lclick[1], game)
+            rightclick(rclick, game)
         else:
             print("somethingsomethinghere")
-
-    return tab

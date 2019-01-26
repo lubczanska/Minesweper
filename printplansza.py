@@ -1,4 +1,4 @@
-def printplanszeszybko (tab, screen, game, textury):
+def printplanszeszybko (screen, game, textury):
 
     # 0-9 - nie wciśnięte wgle
     # 10 - wcisnięty pusty
@@ -8,31 +8,31 @@ def printplanszeszybko (tab, screen, game, textury):
     # 20-28 - flaga
     for i in range(game.nx):
         for j in range(game.ny):
-            if tab[i][j] == 0:
+            if game.tab[i][j] == 0:
                 screen.blit(textury.closed, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] == 9 and game.bombsvisible:
+            elif game.tab[i][j] == 9 and game.bombsvisible:
                 screen.blit(textury.bomb, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] == 11:
+            elif game.tab[i][j] == 11:
                 screen.blit(textury.open1, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] == 12:
+            elif game.tab[i][j] == 12:
                 screen.blit(textury.open2, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] == 13:
+            elif game.tab[i][j] == 13:
                 screen.blit(textury.open3, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] == 14:
+            elif game.tab[i][j] == 14:
                 screen.blit(textury.open4, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] == 15:
+            elif game.tab[i][j] == 15:
                 screen.blit(textury.open5, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] == 16:
+            elif game.tab[i][j] == 16:
                 screen.blit(textury.open6, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] == 17:
+            elif game.tab[i][j] == 17:
                 screen.blit(textury.open7, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] == 18:
+            elif game.tab[i][j] == 18:
                 screen.blit(textury.open8, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] >= 0 and tab[i][j] <=9:
+            elif game.tab[i][j] >= 0 and game.tab[i][j] <=9:
                 screen.blit(textury.closed, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] == 10:
+            elif game.tab[i][j] == 10:
                 screen.blit(textury.open0,  (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif tab[i][j] > 19:
+            elif game.tab[i][j] > 19:
                 screen.blit(textury.flaga, (16*i + game.borderleft, 16* j + game.bordertop))
 
 def smileconverter(screen, game, texture):

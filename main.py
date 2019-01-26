@@ -23,21 +23,20 @@ screen.fill((189,189,189))
 clock = pygame.time.Clock()
 
 while game.running:
-
     if(game.starttime != 0): game_time = int(timer() - game.starttime)
     else: game_time = 0
     clock.tick(30)
 
-    game.running = game.scanforwin(game.tab)
+    game.running = game.scanforwin()
 
     for event in pygame.event.get():
 
         if event.type == pygame.MOUSEBUTTONDOWN:
-            game.tab = eventuser(event, game.tab, game)
+            eventuser(event, game)
         if event.type == pygame.QUIT:
             game.running = False
 
-    printplanszeszybko(game.tab, screen, game, texture)
+    printplanszeszybko(screen, game, texture)
 
     printborder(screen, game, texture)
     printcyferki(0, game.clicks, screen, game, texture)
@@ -48,5 +47,4 @@ while game.running:
 smileconverter(screen, game, texture)
 pygame.display.flip()
 
-pygame.display.flip()
 time.sleep(2)

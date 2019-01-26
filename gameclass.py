@@ -1,5 +1,3 @@
-from planszator import generujpusta
-
 class Gamesettings:
 
     def __init__(self, nx, ny, n, bordertop, borderleft, blocksizex, blocksizey):
@@ -22,17 +20,17 @@ class Gamesettings:
         self.starttime = 0
         self.fclick = True
         self.running = True
-        self.tab = generujpusta(self.nx, self.ny)
+        self.tab = [[0 for i in range(self.nx)] for j in range(self.ny)]
 
-    def scanforwin(self, tab):
+    def scanforwin(self):
 
         opencells = 0
-        for a in tab:
+        for a in self.tab:
             for b in a:
                 if b > 9 and b < 20:
                     opencells += 1
 
-        if opencells + self.n == len(tab) * len(tab[0]):
+        if opencells + self.n == self.nx * self.ny:
             return False
 
         if self.bombsvisible:
