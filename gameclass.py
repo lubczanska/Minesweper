@@ -9,7 +9,7 @@ class Gamesettings:
         self.borderleft = borderleft
         self.bordertop = bordertop
         self.windowsizex = self.nx*blocksizex + 24
-        self.windowsizey = self.nx*blocksizey + 55+12
+        self.windowsizey = self.nx*blocksizey + 55 + 12 + 31
         self.blocksizex = blocksizex
         self.blocksizey = blocksizey
         self.wall = self.windowsizey - self.ny * self.blocksizey
