@@ -5,6 +5,7 @@ from klikato import eventuser
 from planszator import generujpusta
 from printplansza import printplanszeszybko, printborder, printcyferki, smileconverter
 from gameclass import Gamesettings
+from textureclass import Textureclass
 
 nx = 10
 ny = 10
@@ -16,8 +17,9 @@ pygame.init()
 
 screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))
 
-running = 1
+texture = Textureclass(game.theme)
 
+running = 1
 fclick = 1
 
 tab = generujpusta(game.nx, game.ny)
@@ -48,15 +50,15 @@ while running == 1:
 
         for b in range(len(tab[0])):
 
-            printplanszeszybko(tab, a, b, screen, game)
+            printplanszeszybko(tab, a, b, screen, game, texture)
 
-    printborder(screen, game)
-    printcyferki(0, game.clicks, screen, game)
-    printcyferki(1, end, screen, game)
-    smileconverter(screen, running, game)
+    printborder(screen, game, texture)
+    printcyferki(0, game.clicks, screen, game, texture)
+    printcyferki(1, end, screen, game, texture)
+    smileconverter(screen, running, game, texture)
     pygame.display.flip()
 
-smileconverter(screen, running, game)
+smileconverter(screen, running, game, texture)
 pygame.display.flip()
 
 pygame.display.flip()
