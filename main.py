@@ -7,11 +7,11 @@ from printplansza import printplanszeszybko, printborder, printcyferki, smilecon
 from gameclass import Gamesettings
 from textureclass import Textureclass
 
-nx = 20
-ny = 20
-n = 5
+nx = 7
+ny = 7
+n = 10
 
-game = Gamesettings(nx, ny, n, 55, 12, 16, 16)
+game = Gamesettings(nx, ny, n, 86, 12, 16, 16)
 
 pygame.init()
 
@@ -47,15 +47,15 @@ while running == 1:
         if event.type == pygame.QUIT:
             running = 0
 
-    printplanszeszybko(tab, 0, 31, screen, game, texture)
+    printplanszeszybko(tab, screen, game, texture)
 
-    printborder(screen, game, texture, 0, 31)
-    printcyferki(0, game.clicks, screen, game, texture, 0, 31)
-    printcyferki(1, end, screen, game, texture, 0, 31)
-    smileconverter(screen, running, game, texture, 0, 31)
+    printborder(screen, game, texture)
+    printcyferki(0, game.clicks, screen, game, texture)
+    printcyferki(1, end, screen, game, texture)
+    smileconverter(screen, running, game, texture)
     pygame.display.flip()
 
-smileconverter(screen, running, game, texture, 0, 31)
+smileconverter(screen, running, game, texture)
 pygame.display.flip()
 
 pygame.display.flip()
