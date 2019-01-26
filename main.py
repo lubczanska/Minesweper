@@ -8,29 +8,22 @@ from textureclass import Textureclass
 
 nx = 8
 ny = 8
-n = 3
+n = 32
 
 game = Gamesettings(nx, ny, n, 83, 12, 16, 16)
-
 pygame.init()
-
 screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))
 texture = Textureclass(game.theme)
 
-pygame.display.flip()
 screen.fill((189,189,189))
 
-clock = pygame.time.Clock()
-
 while game.running:
-    if(game.starttime != 0): game_time = int(timer() - game.starttime)
+    if(game.starttime): game_time = int(timer() - game.starttime)
     else: game_time = 0
-    clock.tick(30)
 
-    game.running = game.scanforwin()
+    game.scanforwin()
 
     for event in pygame.event.get():
-
         if event.type == pygame.MOUSEBUTTONDOWN:
             eventuser(event, game)
         if event.type == pygame.QUIT:

@@ -17,7 +17,7 @@ class Gamesettings:
         self.clicks = 0
         self.bombsvisible = False
         self.theme = "light"
-        self.starttime = 0
+        self.starttime = False
         self.fclick = True
         self.running = True
         self.tab = [[0 for i in range(self.nx)] for j in range(self.ny)]
@@ -31,9 +31,8 @@ class Gamesettings:
                     opencells += 1
 
         if opencells + self.n == self.nx * self.ny:
-            return False
-
-        if self.bombsvisible:
-            return False
+            self.running = False
+        elif self.bombsvisible:
+            self.running = False
         else:
-            return True
+            self.running = True

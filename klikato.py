@@ -22,7 +22,8 @@ def rightclick(rclick, game):
         game.tab[rclick[0]][rclick[1]] -= 20
 
 def eventuser(event, game):
-    rclick = lclick = [0, 1]
+    rclick = [0, 1]
+    lclick = [0, 1]
 
     if event.button == 1:
         if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):

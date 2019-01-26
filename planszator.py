@@ -8,7 +8,7 @@ def generujtablice(bx, by, game):
         ry = random.randint(0, game.ny - 1)
 
         #sprawdzanie czy wylosowane koordynaty nie sa pod klikiem lub nie zawieraja bomby
-        while rx == bx and ry == by and game.tab[rx][ry] != 0:
+        while rx == bx or ry == by or game.tab[rx][ry] > 8:
             rx = random.randint(0, game.nx - 1)
             ry = random.randint(0, game.ny - 1)
 
@@ -20,7 +20,7 @@ def generujtablice(bx, by, game):
             game.tab[rx - 1][ry] += 1
         if rx < game.nx - 1 and game.tab[rx + 1][ry] < 9:
             game.tab[rx + 1][ry] += 1
-        if ry > 0 and game.tab[rx][ry - 1]< 9:
+        if ry > 0 and game.tab[rx][ry - 1] < 9:
             game.tab[rx][ry - 1] += 1
         if ry < game.ny - 1 and game.tab[rx][ry + 1] < 9:
             game.tab[rx][ry + 1] += 1
