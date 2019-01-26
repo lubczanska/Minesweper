@@ -1,18 +1,20 @@
 class Gamesettings:
 
     def __init__(self, nx, ny, n, bordertop, borderleft, blocksizex, blocksizey):
-        self.nx = nx + 1
-        self.ny = ny + 1
-        self.clicks = 0
+        if(nx < 8): nx = 8
+        if(ny < 8): ny = 8
+        if(n > nx * ny): n = int(nx * ny / 2)
+        self.nx = nx
+        self.ny = ny
         self.n = n
-        self.clicks = 0
-        self.borderleft = borderleft
         self.bordertop = bordertop
-        self.windowsizex = self.nx*blocksizex + 24
-        self.windowsizey = self.nx*blocksizey + 55 + 12 + 31
+        self.borderleft = borderleft
         self.blocksizex = blocksizex
         self.blocksizey = blocksizey
+        self.windowsizex = self.nx*blocksizex + borderleft * 2
+        self.windowsizey = self.nx*blocksizey + bordertop + 12
         self.wall = self.windowsizey - self.ny * self.blocksizey
+        self.clicks = 0
         self.bombsvisible = False
         self.theme = "light"
 

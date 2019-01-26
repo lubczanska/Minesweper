@@ -7,11 +7,11 @@ from printplansza import printplanszeszybko, printborder, printcyferki, smilecon
 from gameclass import Gamesettings
 from textureclass import Textureclass
 
-nx = 7
-ny = 7
-n = 10
+nx = 8
+ny = 8
+n = 70
 
-game = Gamesettings(nx, ny, n, 86, 12, 16, 16)
+game = Gamesettings(nx, ny, n, 83, 12, 16, 16)
 
 pygame.init()
 
@@ -25,6 +25,7 @@ fclick = 1
 tab = generujpusta(game.nx, game.ny)
 
 pygame.display.flip()
+screen.fill((189,189,189))
 
 clock = pygame.time.Clock()
 
