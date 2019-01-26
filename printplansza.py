@@ -35,14 +35,14 @@ def printplanszeszybko (tab, screen, game, textury):
             elif tab[i][j] > 19:
                 screen.blit(textury.flaga, (16*i + game.borderleft, 16* j + game.bordertop))
 
-def smileconverter(screen, a, game, texture):
+def smileconverter(screen, game, texture):
 
-    if(a == 1):
+    if game.running:
         screen.blit(texture.smile, (game.nx * 8 - 2, game.bordertop - 40))
-    elif(a == 0):
-        screen.blit(texture.won, (game.nx * 8 - 2, game.bordertop - 40))
-    elif(a == -1):
+    elif game.bombsvisible:
         screen.blit(texture.lost, (game.nx * 8 - 2, game.bordertop - 40))
+    else:
+        screen.blit(texture.won, (game.nx * 8 - 2, game.bordertop - 40))
 
 def printborder (screen, game, texture):
     #przyciski

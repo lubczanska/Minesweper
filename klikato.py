@@ -5,9 +5,10 @@ from timeit import default_timer as timer
 
 def leftclick(lclick,tab,game):
 
-    if tab[lclick[0]][lclick[1]] >= 20:
-        tab[lclick[0]][lclick[1]] -= 20
-    elif tab[lclick[0]][lclick[1]] == 9:
+    if tab[lclick[0]][lclick[1]] < 10:
+        game.clicks += 1
+
+    if tab[lclick[0]][lclick[1]] == 9:
         game.bombsvisible = True
     elif tab[lclick[0]][lclick[1]] > 0 and tab[lclick[0]][lclick[1]] < 10:
         tab[lclick[0]][lclick[1]] += 10
@@ -40,7 +41,7 @@ def eventuser(event, tab, game):
         if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
             lclick[0] = math.floor((event.pos[0]-game.borderleft)//sizex)
             lclick[1] = math.floor((event.pos[1]-game.bordertop )//sizey)
-            game.clicks = game.clicks+1
+
             if(game.fclick == 1):
                 tab = generujtablice(game.n, game.nx, game.ny, lclick[0], lclick[1])
                 game.starttime = timer()
@@ -54,7 +55,7 @@ def eventuser(event, tab, game):
         if (event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex - game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey - game.borderleft):
             rclick[0] = int((event.pos[0]-game.borderleft)//sizex)
             rclick[1] = int((event.pos[1]-game.bordertop)//sizey)
-            if(fclick == 1):
+            if(game.fclick == 1):
                 tab = generujtablice(game.n, sizex, sizey, lclick[0], lclick[1])
             tab = rightclick(rclick, tab)
         else:
