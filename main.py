@@ -9,7 +9,7 @@ from textureclass import Textureclass
 
 nx = 8
 ny = 8
-n = 70
+n = 10
 
 game = Gamesettings(nx, ny, n, 83, 12, 16, 16)
 
@@ -29,12 +29,12 @@ screen.fill((189,189,189))
 
 clock = pygame.time.Clock()
 
-start = timer()
-
 while running == 1:
 
-    end = timer()
-    end = int(end - start)
+    if(game.starttime != 0):
+        game_time = int(timer() - game.starttime)
+    else:
+        game_time = 0
     clock.tick(30)
 
     running = game.scanforwin(tab)
@@ -52,7 +52,7 @@ while running == 1:
 
     printborder(screen, game, texture)
     printcyferki(0, game.clicks, screen, game, texture)
-    printcyferki(1, end, screen, game, texture)
+    printcyferki(1, game_time, screen, game, texture)
     smileconverter(screen, running, game, texture)
     pygame.display.flip()
 

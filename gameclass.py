@@ -17,6 +17,7 @@ class Gamesettings:
         self.clicks = 0
         self.bombsvisible = False
         self.theme = "light"
+        self.starttime = 0
 
     def scanforwin(self, tab):
 
@@ -29,7 +30,7 @@ class Gamesettings:
         if opencells + self.n == len(tab) * len(tab[0]):
             return 0
 
-        if  self.bombsvisible:
+        if self.bombsvisible:
             return -1
         else:
             return 1

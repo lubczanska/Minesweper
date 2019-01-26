@@ -1,11 +1,10 @@
 import math
 from  odkrywane import odkrywajtablice
 from planszator import generujtablice
+from timeit import default_timer as timer
 
 def leftclick(lclick,tab,game):
 
-    if(tab[lclick[0]][lclick[1]] < 10):
-        game.clicks = game.clicks + 1
     if tab[lclick[0]][lclick[1]] >= 20:
         tab[lclick[0]][lclick[1]] -= 20
     elif tab[lclick[0]][lclick[1]] == 9:
@@ -43,8 +42,9 @@ def eventuser(event, tab, fclick, game):
             lclick[1] = math.floor((event.pos[1]-game.bordertop )//sizey)
             game.clicks = game.clicks+1
             if(fclick == 1):
-                print(game.nx, " ", game.ny)
                 tab = generujtablice(game.n, game.nx, game.ny, lclick[0], lclick[1])
+                game.starttime = timer()
+                print(game.starttime)
 
             tab = leftclick(lclick, tab, game)
         else:
