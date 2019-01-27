@@ -2,7 +2,7 @@ import pygame
 from gameclass import Gamesettings
 import math
 from odkrywane import pokazpuste, pokazbomby
-from planszator import generujtablice
+from planszator import generujtablice, generujpusta
 
 
 def leftclick(lclick,tab,game):
@@ -46,7 +46,9 @@ def eventuser(event, tab, fclick, game):
 
 
     if event.button == 1:
-        if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
+        if event.pos[0]> game.nx * 8 - 1 and event.pos[0] < game.nx * 8 - 1 +26 and event.pos[1] > 15 and event.pos[1] < 15 +26:
+            tab = generujpusta(game.nx, game.ny)
+        elif(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
             print((event.pos[0]-game.borderleft)/sizex)
             lclick[0] = math.floor((event.pos[0]-game.borderleft)//sizex)
             lclick[1] = math.floor((event.pos[1]-game.bordertop)//sizey)

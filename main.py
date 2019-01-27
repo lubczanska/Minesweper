@@ -32,28 +32,34 @@ tab = generujpusta(game.nx, game.ny)
 
 screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))
 
-
+running = 1
 pygame.display.flip()
 
 clock = pygame.time.Clock()
 
-start = timer()
-
+start = 0
+r = 1
 while running == 1:
 
+    if tab == generujpusta(game.nx, game.ny):
+        fclick = 1
     time = timer()
-    time = int(time - start)
+    if r == 1:
+        if fclick == 0:
+            start = 0
+            time = int(time - start)
     print(game.clicks)
     clock.tick(30)
 
 
-    running = game.scanforwin(tab)
+    r = game.scanforwin(tab)
 
 
     for event in pygame.event.get():
 
-        if event.type == pygame.MOUSEBUTTONDOWN:
-
+        if event.type == pygame.MOUSEBUTTONDOWN :
+            if fclick == 1:
+                start = timer()
             tab = eventuser(event, tab, fclick, game)
             fclick = 0
         if event.type == pygame.QUIT:
@@ -67,10 +73,10 @@ while running == 1:
     printborder(screen, game)
     printcyferki(0, game.clicks, screen, game)
     printcyferki(1, time, screen, game)
-    smileconverter(screen, running, game)
+    smileconverter(screen, r, game)
     pygame.display.flip()
 
-smileconverter(screen, running, game)
+
 pygame.display.flip()
 
 
