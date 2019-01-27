@@ -10,12 +10,13 @@ nx = 8
 ny = 8
 n = 32
 
-game = Gamesettings(nx, ny, n, 83, 12, 16, 16)
+game = Gamesettings(nx, ny, n, 91, 12, 16, 16)
 pygame.init()
 screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))
 texture = Textureclass(game.theme)
 
-screen.fill((189,189,189))
+if game.theme == "light": screen.fill((189,189,189))
+else: screen.fill((51,51,51))
 
 while game.running:
     if(game.starttime): game_time = int(timer() - game.starttime)

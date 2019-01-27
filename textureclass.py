@@ -36,7 +36,7 @@ class Textureclass:
         self.won.convert()
         self.lost = pygame.image.load(path + "facedead.gif")
         self.lost.convert()
-        self.smile = pygame.image.load(path + "crying_laughing.gif")
+        self.smile = pygame.image.load(path + "facesmile.gif")
         self.smile.convert()
 
         self.top_left = pygame.image.load(path + "top_left.gif")

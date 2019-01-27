@@ -48,13 +48,13 @@ def printborder (screen, game, texture):
     #przyciski
     screen.blit(texture.bordertl, (0, 0))
     screen.blit(texture.bordertr, (game.nx * 16 + game.borderleft, 0))
-    screen.blit(texture.buttongame, (12, 12))
-    screen.blit(texture.buttonmulti, (game.nx * 16 + game.borderleft - 50, 12))
+    screen.blit(texture.buttongame, (16, 16))
+    screen.blit(texture.buttonmulti, (game.nx * 16 + game.borderleft - 54, 16))
     for a in range(game.nx):
         screen.blit(texture.bottom_middle, (16 * a + game.borderleft, 0))
-    for a in range(4):
+    for a in range(6):
         screen.blit(texture.borderlr, (0, 12 + a * 4))
-    for a in range(4):
+    for a in range(6):
         screen.blit(texture.borderlr, (game.borderleft + game.nx * 16, 12 + a * 4))
 
     #wyswietlacz
