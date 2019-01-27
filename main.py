@@ -6,9 +6,9 @@ from printplansza import printplanszeszybko, printborder, printcyferki, smilecon
 from gameclass import Gamesettings
 from textureclass import Textureclass
 
-nx = 8
-ny = 8
-n = 32
+nx = 10
+ny = 10
+n = 10
 
 game = Gamesettings(nx, ny, n, 91, 12, 16, 16)
 pygame.init()

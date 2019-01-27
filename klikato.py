@@ -9,6 +9,7 @@ def leftclick(lclick, game):
 
     if game.tab[lclick[0]][lclick[1]] == 9:
         game.bombsvisible = True
+        game.tab[lclick[0]][lclick[1]] = 30
     elif game.tab[lclick[0]][lclick[1]] > 0 and game.tab[lclick[0]][lclick[1]] < 10:
         game.tab[lclick[0]][lclick[1]] += 10
     else:
