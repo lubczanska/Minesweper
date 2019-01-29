@@ -63,8 +63,8 @@ def printborder (screen, game, texture):
     screen.blit(texture.bordertr, (game.nx * 16 + game.borderleft, 0))
     screen.blit(texture.buttongame, (16, 16))
     screen.blit(texture.buttonmulti, (game.nx * 16 + game.borderleft - 54, 16))
-    for a in range(game.nx):
-        screen.blit(texture.bottom_middle, (16 * a + game.borderleft, 0))
+    for a in range(game.nx*4):
+        screen.blit(texture.bottom_middle, (4 * a + game.borderleft, 0))
     for a in range(6):
         screen.blit(texture.borderlr, (0, 12 + a * 4))
     for a in range(6):
@@ -81,8 +81,8 @@ def printborder (screen, game, texture):
         screen.blit(texture.side_left, (0, 16 * b + game.bordertop))
         screen.blit(texture.side_right, (16 * game.nx + game.borderleft, 16 * b + game.bordertop))
     screen.blit(texture.bottom_left, (0, 16 * game.nx + game.bordertop))
-    for a in range(game.nx):
-        screen.blit(texture.bottom_middle, (16 * a + game.borderleft, 16 * game.nx + game.bordertop))
+    for a in range(game.nx*4):
+        screen.blit(texture.bottom_middle, (4 * a + game.borderleft, 16 * game.nx + game.bordertop))
     screen.blit(texture.bottom_right, (16 * game.nx + game.borderleft, 16 * game.nx + game.bordertop))
 
 def printcyferki (side, input, screen, game, texture):
@@ -128,8 +128,8 @@ def printmenu (screen, game, texture):
 
     #Gorna belka
     screen.blit(texture.bordertl, (16, 32))
-    for i in range(6):
-        screen.blit(texture.bottom_middle, (16 * i + 28, 32))
+    for i in range(24):
+        screen.blit(texture.bottom_middle, (4 * i + 28, 32))
     screen.blit(texture.bordertr, (16 * 6 + 28, 32))
 
     #Boki
@@ -139,8 +139,8 @@ def printmenu (screen, game, texture):
 
     #Dolna belka
     screen.blit(texture.bottom_left, (16, 130))
-    for i in range(6):
-        screen.blit(texture.bottom_middle, (16 * i + 28, 130))
+    for i in range(24):
+        screen.blit(texture.bottom_middle, (4 * i + 28, 130))
     screen.blit(texture.bottom_right, (16 * 6 + 28, 130))
 
     pygame.draw.rect(screen, game.color, (28, 44, 96, 86))
