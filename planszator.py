@@ -1,7 +1,7 @@
 import random
 
 def generujtablice(bx, by, game):
-
+    '''
     game.tab[0][0] = 0
     game.tab[0][1] = 1
     game.tab[0][2] = 2
@@ -44,4 +44,3 @@ def generujtablice(bx, by, game):
             game.tab[rx - 1][ry + 1] += 1
         if rx < game.nx - 1 and ry < game.ny - 1 and game.tab[rx + 1][ry + 1] < 9:
             game.tab[rx + 1][ry + 1] += 1
-'''

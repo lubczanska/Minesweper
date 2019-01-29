@@ -57,7 +57,7 @@ def eventuser(event, game):
             rclick[0] = int((event.pos[0]-game.borderleft)//game.blocksizex)
             rclick[1] = int((event.pos[1]-game.bordertop)//game.blocksizey)
             if(game.fclick == 1):
-                game.tab = generujtablice(lclick[0], lclick[1], game)
+                generujtablice(lclick[0], lclick[1], game)
                 game.starttime = timer()
                 game.fclick = False
 
