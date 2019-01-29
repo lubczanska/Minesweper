@@ -3,14 +3,15 @@ import pygame
 
 class InputBox:
 
-    def __init__(self, x, y, w, h, colornotfocused, colorfocused, editable=True, text=''):
+    def __init__(self, x, y, w, h, colornotfocused, colorfocused, editable=True, text='', transparent=False, fontsize = 13):
         self.rect = pygame.Rect(x, y, w, h)             #prostokat w ktorym bedzie wejscie
         self.colornotfocused = colornotfocused          #kolor kiedy pole nie aktywne
         self.colorfocused = colorfocused                #kolor kiedy pole aktywne
         self.editable = editable                        #czy mozna zmienaic text
-        self.color = pygame.Color(self.colornotfocused) #color fonta
+        self.color = pygame.Color(self.colornotfocused)               #color fonta
         self.text = text                                #tekst na poczatku
-        self.txt_surface = pygame.font.SysFont('Arial', 13, True).render(text, True, self.color)    #wyrenderowanie tekstu poczatkowego
+        self.txt_surface = pygame.font.SysFont('Arial', fontsize, True).render(text, True, self.color)    #wyrenderowanie tekstu poczatkowego
+        self.transparent = transparent                  #czy wyswietlac ramke
         self.active = False                             #czy aktywne
 
     def handle_event(self, event):
@@ -35,4 +36,5 @@ class InputBox:
         #rysowanie tekstu
         screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+2))
         #rysowanie ramki
-        pygame.draw.rect(screen, self.color, self.rect, 2)
+        if not self.transparent:
+            pygame.draw.rect(screen, self.color, self.rect, 2)

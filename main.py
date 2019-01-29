@@ -25,6 +25,9 @@ sizeytext = InputBox(31, 68, 60, 17, 'gray', 'white', False, "Width")   #napis w
 bombstext = InputBox(31, 89, 60, 17, 'gray', 'white', False, "Bombs")   #napis w menu ilsoc bomb n
 themetext = InputBox(31, 110, 60, 17, 'gray', 'white', False, "Theme")  #napis w menu motyw game.theme
 texts = [sizextext, sizeytext, bombstext, themetext]
+gamebutton = InputBox(20, 15, 41, 16, "gray", 'white', False, "Game", True, 12)   #napis w menu ilsoc bomb n
+multibutton = InputBox(game.nx * 16 - 35, 15, 35, 16, 'gray', 'white', False, "Multi", True, 12)  #napis w menu motyw game.theme
+buttons = [gamebutton, multibutton]
 
 while game.running:
     #zablokowanie odswiezania gry do 30 FPS
@@ -52,6 +55,8 @@ while game.running:
     printcyferki(0, game.clicks, screen, game, texture)
     printcyferki(1, game_time, screen, game, texture)
     smileconverter(screen, game, texture)
+    for button in buttons:
+        button.draw(screen)
     if game.menuvisible:
         printmenu(screen, game, texture)
         for box in boxes: box.draw(screen)
