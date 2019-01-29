@@ -31,6 +31,8 @@ class Textureclass:
         self.bombdeath.convert()
         self.flaga = pygame.image.load(path + "bombflagged.gif")
         self.flaga.convert()
+        self.bombmisflagged = pygame.image.load(path + "bombmisflagged.gif")
+        self.bombmisflagged.convert()
 
         self.won = pygame.image.load(path + "facewin.gif")
         self.won.convert()

@@ -33,9 +33,16 @@ def printplanszeszybko (screen, game, textury):
             elif game.tab[i][j] >= 0 and game.tab[i][j] <=9:
                 screen.blit(textury.closed, (16 * i + game.borderleft, 16 * j + game.bordertop))
             elif game.tab[i][j] == 10:
-                screen.blit(textury.open0,  (16 * i + game.borderleft, 16 * j + game.bordertop))
+                screen.blit(textury.open0, (16 * i + game.borderleft, 16 * j + game.bordertop))
+            elif game.tab[i][j] >= 20 and game.tab[i][j] <= 28 and game.bombsvisible:
+                screen.blit(textury.bombmisflagged, (16 * i + game.borderleft, 16 * j + game.bordertop))
+            elif game.tab[i][j] == 30:
+                screen.blit(textury.bombdeath, (16 * i + game.borderleft, 16 * j + game.bordertop))
             elif game.tab[i][j] > 19:
-                screen.blit(textury.flaga, (16*i + game.borderleft, 16* j + game.bordertop))
+                screen.blit(textury.flaga, (16 * i + game.borderleft, 16 * j + game.bordertop))
+
+
+
 
 def smileconverter(screen, game, texture):
 

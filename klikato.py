@@ -9,6 +9,7 @@ def leftclick(lclick, game):
 
     if game.tab[lclick[0]][lclick[1]] == 9:
         game.bombsvisible = True
+        game.tab[lclick[0]][lclick[1]] = 30
     elif game.tab[lclick[0]][lclick[1]] > 0 and game.tab[lclick[0]][lclick[1]] < 10:
         game.tab[lclick[0]][lclick[1]] += 10
     else:
@@ -27,7 +28,9 @@ def eventuser(event, game):
     lclick = [0, 1]
 
     if event.button == 1:
-        if(event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
+        if event.pos[0] > 16 and event.pos[0] < 66 and event.pos[1] > 16 and event.pos[1] < 32:
+            game.menuvisible = not game.menuvisible
+        elif not game.menuvisible and event.pos[0] > game.borderleft and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
             lclick[0] = math.floor((event.pos[0]-game.borderleft)//game.blocksizex)
             lclick[1] = math.floor((event.pos[1]-game.bordertop )//game.blocksizey)
 
@@ -41,7 +44,7 @@ def eventuser(event, game):
             print("somthing")
 
     if event.button == 3:
-        if (event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex - game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey - game.borderleft):
+        if (not game.menuvisible and event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex - game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey - game.borderleft):
             rclick[0] = int((event.pos[0]-game.borderleft)//game.blocksizex)
             rclick[1] = int((event.pos[1]-game.bordertop)//game.blocksizey)
             if(game.fclick == 1):

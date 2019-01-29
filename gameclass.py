@@ -16,11 +16,12 @@ class Gamesettings:
         self.wall = self.windowsizey - self.ny * self.blocksizey
         self.clicks = 0
         self.bombsvisible = False
-        self.theme = "dark" #dark light
+        self.theme = "light" #dark light
         self.starttime = False
         self.fclick = True
         self.running = True
         self.tab = [[0 for i in range(self.nx)] for j in range(self.ny)]
+        self.menuvisible = False
         if(self.theme == "dark"): self.color = (51, 51, 51)
         else: self.color = (189, 189, 189)
 

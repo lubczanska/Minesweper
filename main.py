@@ -7,9 +7,9 @@ from gameclass import Gamesettings
 from textureclass import Textureclass
 from textfieldclass import InputBox
 
-nx = 12
-ny = 8
-n = 1
+nx = 10
+ny = 10
+n = 10
 
 game = Gamesettings(nx, ny, n, 91, 12, 16, 16)
 pygame.init()
@@ -47,9 +47,10 @@ while game.running:
     printcyferki(0, game.clicks, screen, game, texture)
     printcyferki(1, game_time, screen, game, texture)
     smileconverter(screen, game, texture)
-    #printmenu(screen, game, texture)
-    for box in boxes: box.draw(screen)
-    for text in texts: text.draw(screen)
+    if game.menuvisible:
+        printmenu(screen, game, texture)
+        for box in boxes: box.draw(screen)
+        for text in texts: text.draw(screen)
     pygame.display.flip()
 
 time.sleep(2)
