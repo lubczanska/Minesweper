@@ -1,13 +1,15 @@
 def odkrywajtablice(game, x, y):
-
+    #odkrywanie pola 0 i wszystkich na okolo
     if game.tab[x][y] == 0:
         game.tab[x][y] += 10
+    #odkrywanie pol z numerkami
     elif game.tab[x][y] < 9:
         game.tab[x][y] += 10
         return 0
     else:
         return 0
 
+    #odkrywanie wszystkich pol na okolo
     if x > 0:
         odkrywajtablice(game, x - 1, y)
     if y > 0:

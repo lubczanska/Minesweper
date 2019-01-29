@@ -58,13 +58,18 @@ def printborder (screen, game, texture):
         screen.fill((189, 189, 189))
     else:
         screen.fill((51, 51, 51))
-    #przyciski
+
+    #PRZYCISKI
+    #narozniki
     screen.blit(texture.bordertl, (0, 0))
     screen.blit(texture.bordertr, (game.nx * 16 + game.borderleft, 0))
+    #przyciski
     screen.blit(texture.button, (16, 16))
     screen.blit(texture.button, (game.nx * 16 + game.borderleft - 54, 16))
+    #gorna belka
     for a in range(game.nx*4):
         screen.blit(texture.bordertb, (4 * a + game.borderleft, 0))
+    #prawy i lewy bok
     for a in range(6):
         screen.blit(texture.borderlr, (0, 12 + a * 4))
         screen.blit(texture.borderlr, (game.borderleft + game.nx * 16, 12 + a * 4))
@@ -84,14 +89,17 @@ def printborder (screen, game, texture):
         screen.blit(texture.borderlr, (0, game.bordertop - 44 + a * 4))
         screen.blit(texture.borderlr, (16 * game.nx + game.borderleft, game.bordertop - 44 + a * 4))
 
-    #plansza
+    #PLANSZA
+    #narozniki
+    screen.blit(texture.borderbl, (0, 16 * game.nx + game.bordertop))
+    screen.blit(texture.borderbr, (16 * game.nx + game.borderleft, 16 * game.nx + game.bordertop))
+    #dolna belka
+    for a in range(game.nx*4):
+        screen.blit(texture.bordertb, (4 * a + game.borderleft, 16 * game.nx + game.bordertop))
+    #prawy i lewy bok
     for b in range(game.nx):
         screen.blit(texture.borderl, (0, 16 * b + game.bordertop))
         screen.blit(texture.borderl, (16 * game.nx + game.borderleft, 16 * b + game.bordertop))
-    screen.blit(texture.bordertb, (0, 16 * game.nx + game.bordertop))
-    for a in range(game.nx*4):
-        screen.blit(texture.bordertb, (4 * a + game.borderleft, 16 * game.nx + game.bordertop))
-    screen.blit(texture.borderbr, (16 * game.nx + game.borderleft, 16 * game.nx + game.bordertop))
 
 def printcyferki (side, input, screen, game, texture):
     # 13 x 23 px, (16 * game.nx - 16 * 3 + game.borderleft + 2  , 16)
@@ -129,26 +137,24 @@ def printcyferki (side, input, screen, game, texture):
             screen.blit(texture.time8, (print_side + 13 * i, game.bordertop - 39))
         elif a == 9:
             screen.blit(texture.time9, (print_side + 13 * i, game.bordertop - 39))
-        i = i + 1
+        i += 1
 
 def printmenu (screen, game, texture):
     #16 32
 
-    #Gorna belka
+    #narozniki
     screen.blit(texture.bordertl, (16, 32))
+    screen.blit(texture.bordertr, (16 * 6 + 28, 32))
+    screen.blit(texture.borderbl, (16, 130))
+    screen.blit(texture.borderbr, (16 * 6 + 28, 130))
+    #gorna i dolna belka
     for i in range(24):
         screen.blit(texture.bordertb, (4 * i + 28, 32))
-    screen.blit(texture.bordertr, (16 * 6 + 28, 32))
-
-    #Boki
+    for i in range(24):
+        screen.blit(texture.bordertb, (4 * i + 28, 130))
+    #prawy i lewy bok
     for i in range(23):
         screen.blit(texture.borderlr, (16, 4 * i + 44))
         screen.blit(texture.borderlr, (124, 4 * i + 44))
-
-    #Dolna belka
-    screen.blit(texture.borderbl, (16, 130))
-    for i in range(24):
-        screen.blit(texture.bordertb, (4 * i + 28, 130))
-    screen.blit(texture.borderbr, (16 * 6 + 28, 130))
-
+    #wypelnienie
     pygame.draw.rect(screen, game.color, (28, 44, 96, 86))

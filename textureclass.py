@@ -3,8 +3,9 @@ import pygame
 class Textureclass:
 
     def __init__(self, theme):
+        #sciezka do textur zalezna od motywu
         path = "images/" + theme + "/"
-
+        #textury kafelkow
         self.closed = pygame.image.load(path + "blank.gif")
         self.closed.convert()
         self.open0 = pygame.image.load(path + "open0.gif")
@@ -33,14 +34,14 @@ class Textureclass:
         self.flaga.convert()
         self.bombmisflagged = pygame.image.load(path + "bombmisflagged.gif")
         self.bombmisflagged.convert()
-
+        #textury buziek
         self.won = pygame.image.load(path + "facewin.gif")
         self.won.convert()
         self.lost = pygame.image.load(path + "facedead.gif")
         self.lost.convert()
         self.smile = pygame.image.load(path + "facesmile.gif")
         self.smile.convert()
-
+        #textury krawedzi
         self.borderl = pygame.image.load(path + "borderl.gif")
         self.borderl.convert()
         self.borderbl = pygame.image.load(path + "borderbl.gif")
@@ -59,10 +60,10 @@ class Textureclass:
         self.borderjl.convert()
         self.borderjr = pygame.image.load(path + "borderjr.gif")
         self.borderjr.convert()
-
+        #textury przyciskow
         self.button = pygame.image.load(path + "button.gif")
         self.button.convert()
-
+        #textury wyswietlacza
         self.time0 = pygame.image.load(path + "time0.gif")
         self.time0.convert()
         self.time1 = pygame.image.load(path + "time1.gif")
