@@ -1,3 +1,5 @@
+import pygame
+
 def printplanszeszybko (screen, game, textury):
 
     # 0-9 - nie wciśnięte wgle
@@ -6,8 +8,8 @@ def printplanszeszybko (screen, game, textury):
     # 19 - bomba kliknięta
     # 29 - bomba oflagowana
     # 20-28 - flaga
-    for i in range(game.nx):
-        for j in range(game.ny):
+    for i in range(game.ny):
+        for j in range(game.nx):
             if game.tab[i][j] == 0:
                 screen.blit(textury.closed, (16 * i + game.borderleft, 16 * j + game.bordertop))
             elif game.tab[i][j] == 9 and game.bombsvisible:
@@ -45,6 +47,10 @@ def smileconverter(screen, game, texture):
         screen.blit(texture.won, (game.nx * 8 - 2, game.bordertop - 40))
 
 def printborder (screen, game, texture):
+    if game.theme == "light":
+        screen.fill((189, 189, 189))
+    else:
+        screen.fill((51, 51, 51))
     #przyciski
     screen.blit(texture.bordertl, (0, 0))
     screen.blit(texture.bordertr, (game.nx * 16 + game.borderleft, 0))
@@ -109,3 +115,25 @@ def printcyferki (side, input, screen, game, texture):
         elif a == 9:
             screen.blit(texture.time9, (print_side + 13 * i, game.bordertop - 39))
         i = i + 1
+
+def printmenu (screen, game, texture):
+    #16 32
+
+    #Gorna belka
+    screen.blit(texture.bordertl, (16, 32))
+    for i in range(6):
+        screen.blit(texture.bottom_middle, (16 * i + 28, 32))
+    screen.blit(texture.bordertr, (16 * 6 + 28, 32))
+
+    #Boki
+    for i in range(23):
+        screen.blit(texture.borderlr, (16, 4 * i + 44))
+        screen.blit(texture.borderlr, (124, 4 * i + 44))
+
+    #Dolna belka
+    screen.blit(texture.bottom_left, (16, 130))
+    for i in range(6):
+        screen.blit(texture.bottom_middle, (16 * i + 28, 130))
+    screen.blit(texture.bottom_right, (16 * 6 + 28, 130))
+
+    pygame.draw.rect(screen, game.color, (28, 44, 96, 86))

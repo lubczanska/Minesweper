@@ -15,7 +15,8 @@ def leftclick(lclick, game):
         odkrywajtablice(game, lclick[0], lclick[1])
 
 def rightclick(rclick, game):
-
+    if(game.tab == None):
+        generujtablice(rclick[0], rclick[1], game)
     if game.tab[rclick[0]][rclick[1]] < 10:
         game.tab[rclick[0]][rclick[1]] += 20
     elif game.tab[rclick[0]][rclick[1]] >= 20:

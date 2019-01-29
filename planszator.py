@@ -24,7 +24,7 @@ def generujtablice(bx, by, game):
             rx = random.randint(0, game.nx - 1)
             ry = random.randint(0, game.ny - 1)
 
-        # wstawianie bomby na kordynaty
+        # wstawianie bomby na koordynaty
         game.tab[rx][ry] = 9
 
         #zwiekszanie znacznikow naookolo bomby
@@ -44,5 +44,4 @@ def generujtablice(bx, by, game):
             game.tab[rx - 1][ry + 1] += 1
         if rx < game.nx - 1 and ry < game.ny - 1 and game.tab[rx + 1][ry + 1] < 9:
             game.tab[rx + 1][ry + 1] += 1
-
-    '''
+'''
