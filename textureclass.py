@@ -41,12 +41,6 @@ class Textureclass:
         self.smile = pygame.image.load(path + "facesmile.gif")
         self.smile.convert()
 
-        self.top_left = pygame.image.load(path + "top_left.gif")
-        self.top_left.convert()
-        self.top_middle = pygame.image.load(path + "top_middle.gif")
-        self.top_middle.convert()
-        self.top_right = pygame.image.load(path + "top_right.gif")
-        self.top_right.convert()
         self.borderl = pygame.image.load(path + "borderl.gif")
         self.borderl.convert()
         self.borderbl = pygame.image.load(path + "borderbl.gif")

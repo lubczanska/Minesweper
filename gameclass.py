@@ -16,7 +16,7 @@ class Gamesettings:
         self.wall = self.windowsizey - self.ny * self.blocksizey
         self.clicks = 0
         self.bombsvisible = False
-        self.theme = "dark" #dark light
+        self.theme = "light" #dark light
         self.starttime = False
         self.fclick = True
         self.running = True
