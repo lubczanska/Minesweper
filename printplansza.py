@@ -158,3 +158,8 @@ def printmenu (screen, game, texture):
         screen.blit(texture.borderlr, (124, 4 * i + 44))
     #wypelnienie
     pygame.draw.rect(screen, game.color, (28, 44, 96, 86))
+    #przycisk do zmiany motywu
+    if game.theme == 'dark':
+        screen.blit(texture.sun, (100, 110))
+    else:
+        screen.blit(texture.moon, (100, 110))
