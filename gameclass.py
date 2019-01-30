@@ -16,6 +16,8 @@ class Gamesettings:
         self.windowsizex = self.nx*blocksizex + borderleft * 2              #szerokosc okna
         self.windowsizey = self.nx*blocksizey + bordertop + 12              #wysokosc okna
         self.clicks = 0                                                     #liczba klikniec
+        self.clickedx = 0                                                   #x gdzie jest kliknieta mysz
+        self.clickedy = 0                                                   #y gdzie jest kliknieta mysz
         self.bombsvisible = False                                           #widocznosc bomb
         self.theme = "dark"                                                 #motyw dark/light
         self.starttime = False                                              #czy wystartowac timer
