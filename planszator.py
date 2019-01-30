@@ -1,10 +1,12 @@
 import random
 
 def generujpusta(x,y):
+
     tab = [[0 for i in range(x)] for j in range(y)]
     return tab
 
 def generujtablice(n, x, y, bx, by):
+
     #generowanie pustej tablicy
     tab = generujpusta(x, y)
 
@@ -14,7 +16,7 @@ def generujtablice(n, x, y, bx, by):
         ry = random.randint(0, y - 1)
 
         #sprawdzanie czy wylosowane koordynaty nie sa pod klikiem lub nie zawieraja bomby
-        while rx == bx and ry == by and tab[rx][ry] == 9:
+        while rx == bx and ry == by and tab[rx][ry] != 0:
             rx = random.randint(0, x - 1)
             ry = random.randint(0, y - 1)
 

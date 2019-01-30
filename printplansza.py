@@ -1,6 +1,4 @@
 import pygame
-from gameclass import Gamesettings
-
 
 def printplanszeszybko (tab, x_coord, y_coord, screen, game):
 
@@ -37,16 +35,11 @@ def printplanszeszybko (tab, x_coord, y_coord, screen, game):
     # 19 - bomba kliknięta
     # 29 - bomba oflagowana
     # 20-28 - flaga
-    #
-    #
-    #
-    #
-    #
-    #
-    #
 
     if tab[x_coord][y_coord] == 0:
         screen.blit(closed, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
+    elif tab[x_coord][y_coord] == 9 and game.bombsvisible:
+        screen.blit(bomb, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 11:
         screen.blit(open1, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 12:
@@ -63,8 +56,6 @@ def printplanszeszybko (tab, x_coord, y_coord, screen, game):
         screen.blit(open7, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 18:
         screen.blit(open8, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
-    elif tab[x_coord][y_coord] == 19:
-        screen.blit(bomb, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] >= 0 and tab[x_coord][y_coord] <=9:
         screen.blit(closed, (16 * x_coord + game.borderleft, 16 * y_coord + game.bordertop))
     elif tab[x_coord][y_coord] == 10:
@@ -86,11 +77,6 @@ def smileconverter(screen, a, game):
         screen.blit(won, (game.nx * 8 - 1, 15))
     elif(a == -1):
         screen.blit(lost, (game.nx * 8 - 1, 15))
-
-
-
-
-
 
 def printborder (screen, game):
 
@@ -125,7 +111,7 @@ def printborder (screen, game):
         screen.blit(bottom_middle, (16 * a + game.borderleft, 16 * game.nx + game.bordertop))
     screen.blit(bottom_right, (16 * game.nx + game.borderleft, 16 * game.nx + game.bordertop))
     screen.blit(smile, (game.nx * 8 - 1, 15))
-    
+
 def printcyferki (side, input, screen, game):
 
     time0 = pygame.image.load("images/time0.gif")

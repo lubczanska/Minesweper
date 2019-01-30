@@ -1,7 +1,9 @@
 class Gamesettings:
+
     def __init__(self, nx, ny, n, bordertop, borderleft, blocksizex, blocksizey):
         self.nx = nx + 1
         self.ny = ny + 1
+        self.clicks = 0
         self.n = n
         self.clicks = 0
         self.borderleft = borderleft
@@ -11,25 +13,20 @@ class Gamesettings:
         self.blocksizex = blocksizex
         self.blocksizey = blocksizey
         self.wall = self.windowsizey - self.ny * self.blocksizey
+        self.bombsvisible = False
 
     def scanforwin(self, tab):
-        flaggedbombs = 0
+
         opencells = 0
         for a in tab:
             for b in a:
-                if b == 29:
-                    flaggedbombs += 1
-                if b > 9:
+                if b > 9 and b < 20:
                     opencells += 1
 
-        #if flaggedbombs == self.n and opencells == len(tab) * len(tab[0]):
         if opencells + self.n == len(tab) * len(tab[0]):
             return 0
 
-
-        for a in tab:
-            for b in a:
-                if b == 19:
-                    return -1
+        if  self.bombsvisible:
+            return -1
         else:
             return 1
