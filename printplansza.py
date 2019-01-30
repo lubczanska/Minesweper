@@ -8,12 +8,16 @@ def printplanszeszybko (screen, game, textury):
     # 19 - bomba kliknięta
     # 29 - bomba oflagowana
     # 20-28 - flaga
+    # 30-39 - wyświetla pusty w animacji klikania
+    # 40 - czerwona bomba
     for i in range(game.ny):
         for j in range(game.nx):
             if game.tab[i][j] == 0:
                 screen.blit(textury.closed, (16 * i + game.borderleft, 16 * j + game.bordertop))
             elif game.tab[i][j] == 9 and game.bombsvisible:
                 screen.blit(textury.bomb, (16 * i + game.borderleft, 16 * j + game.bordertop))
+            elif game.tab[i][j] == 40:
+                screen.blit(textury.bombdeath, (16 * i + game.borderleft, 16 * j + game.bordertop))
             elif game.tab[i][j] == 11:
                 screen.blit(textury.open1, (16 * i + game.borderleft, 16 * j + game.bordertop))
             elif game.tab[i][j] == 12:
@@ -32,12 +36,10 @@ def printplanszeszybko (screen, game, textury):
                 screen.blit(textury.open8, (16 * i + game.borderleft, 16 * j + game.bordertop))
             elif game.tab[i][j] >= 0 and game.tab[i][j] <=9:
                 screen.blit(textury.closed, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif game.tab[i][j] == 10:
+            elif game.tab[i][j] == 10 or game.tab[i][j] >= 30:
                 screen.blit(textury.open0, (16 * i + game.borderleft, 16 * j + game.bordertop))
             elif game.tab[i][j] >= 20 and game.tab[i][j] <= 28 and game.bombsvisible:
                 screen.blit(textury.bombmisflagged, (16 * i + game.borderleft, 16 * j + game.bordertop))
-            elif game.tab[i][j] == 30:
-                screen.blit(textury.bombdeath, (16 * i + game.borderleft, 16 * j + game.bordertop))
             elif game.tab[i][j] > 19:
                 screen.blit(textury.flaga, (16 * i + game.borderleft, 16 * j + game.bordertop))
 

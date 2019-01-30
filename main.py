@@ -1,7 +1,7 @@
 import  time
 import pygame
 from timeit import default_timer as timer
-from klikato import eventuser
+from klikato import eventuser, clicked
 from printplansza import printplanszeszybko, printborder, printcyferki, smileconverter, printmenu
 from gameclass import Gamesettings
 from textureclass import Textureclass
@@ -10,6 +10,9 @@ from textfieldclass import InputBox
 nx = 10
 ny = 10
 n = 10
+is_clicked = 0
+last_x = 0
+last_y = 0
 
 game = Gamesettings(nx, ny, n, 91, 12, 16, 16)                          #stworzenie obiektu z parametrami gry
 pygame.init()                                                           #inicjalizacja gry
@@ -38,10 +41,24 @@ while game.running:
     else: game_time = 0
     #Sprawdzanie wygranej
     game.scanforwin()
+    #Animacja klikania
+    if is_clicked > 0:
+        clicked(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1], is_clicked, game)
 
     for event in pygame.event.get():
         #Klikniecie przycisku myszy
         if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1 or event.button == 2:
+                is_clicked = event.button
+            elif event.button == 3:
+                eventuser(event, game)
+        elif event.type == pygame.MOUSEBUTTONUP and is_clicked > 0:
+            is_clicked = 0
+            for a in range(3):
+                for b in range(3):
+                    if game.clickedx + (a - 1) >= 0 and game.clickedx + (a - 1) < game.nx and game.clickedy + (b - 1) >= 0 and game.clickedy + (b - 1) < game.ny:
+                        if game.tab[game.clickedx + (a - 1)][game.clickedy + (b - 1)] >= 30:
+                            game.tab[game.clickedx + (a - 1)][game.clickedy + (b - 1)] -= 30
             eventuser(event, game)
         #Zamkniecie gry
         if event.type == pygame.QUIT:
