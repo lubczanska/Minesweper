@@ -19,7 +19,6 @@ pygame.init()                                                           #inicjal
 screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))  #stworzenie ekranu
 clock = pygame.time.Clock()                                             #stworzenie Zegara
 texture = Textureclass(game.theme)                                      #stworzenie obiektu z texturami
-#gray/white -> dark/dimgray
 sizex = InputBox(98, 47, 22, 17)                       #wejscie w menu wysokosc planszy
 sizey = InputBox(98, 68, 22, 17)                       #wejscie w menu szerokosc planszy
 bombs = InputBox(98, 89, 22, 17)                       #wejscie w menu ilsco bomby
@@ -59,7 +58,7 @@ while game.running:
                     if game.clickedx + (a - 1) >= 0 and game.clickedx + (a - 1) < game.nx and game.clickedy + (b - 1) >= 0 and game.clickedy + (b - 1) < game.ny:
                         if game.tab[game.clickedx + (a - 1)][game.clickedy + (b - 1)] >= 30:
                             game.tab[game.clickedx + (a - 1)][game.clickedy + (b - 1)] -= 30
-            eventuser(event, game)
+            eventuser(event, game, screen)
         #Zamkniecie gry
         if event.type == pygame.QUIT:
             game.running = False

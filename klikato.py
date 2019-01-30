@@ -76,7 +76,7 @@ def scrollclick(sclick, game):
                         odkrywajtablice(game, sclick[0] + (a - 1), sclick[1] + (b - 1))
 
 
-def eventuser(event, game):
+def eventuser(event, game, screen):
     #koordynaty klikniecia
     rclick = [0, 1]
     lclick = [0, 1]
@@ -91,7 +91,10 @@ def eventuser(event, game):
             if game.theme == 'dark': game.theme = 'light'
             else: game.theme = 'dark'
             game.themechanged = True
-            #klkianie w plansze
+        #klikanie w buzke - reset
+        if event.pos[0] > 78 and event.pos[0] < 103 and event.pos[1] > 41 and event.pos[1] < 76:
+            screen = game.reset()
+        #klkianie w plansze
         elif not game.menuvisible and event.pos[0] > game.borderleft and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
             lclick[0] = math.floor((event.pos[0]-game.borderleft)//game.blocksizex)
             lclick[1] = math.floor((event.pos[1]-game.bordertop )//game.blocksizey)

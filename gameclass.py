@@ -1,3 +1,4 @@
+import pygame
 class Gamesettings:
 
     def __init__(self, nx, ny, n, bordertop, borderleft, blocksizex, blocksizey):
@@ -44,3 +45,17 @@ class Gamesettings:
         #przegrana
         elif self.bombsvisible:
             self.running = False
+
+    def reset(self):
+        self.windowsizex = self.nx * self.blocksizex + self.borderleft * 2
+        self.windowsizey = self.nx * self.blocksizey + self.bordertop + 12
+        self.clicks = 0
+        self.clickedx = 0
+        self.clickedy = 0
+        self.bombsvisible = False
+        self.starttime = False
+        self.fclick = True
+        self.running = True
+        self.tab = [[0 for i in range(self.nx)] for j in range(self.ny)]
+        return pygame.display.set_mode((self.windowsizex, self.windowsizey))
+
