@@ -1,19 +1,7 @@
 import random
 
 def generujtablice(bx, by, game):
-    '''
-    game.tab[0][0] = 0
-    game.tab[0][1] = 1
-    game.tab[0][2] = 2
-    game.tab[0][3] = 3
-    game.tab[0][4] = 4
-    game.tab[0][5] = 5
-    game.tab[0][6] = 6
-    game.tab[1][0] = 7
-    game.tab[1][1] = 8
-    game.tab[1][2] = 9
-    game.tab[1][3] = 20
-    '''
+
     for i in range(game.n):
         # losowanie koordynatow bomby
         rx = random.randint(0, game.nx - 1)
