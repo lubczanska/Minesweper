@@ -2,6 +2,7 @@ import math
 from  odkrywane import odkrywajtablice
 from planszator import generujtablice
 from timeit import default_timer as timer
+from textureclass import Textureclass
 
 def leftclick(lclick, game):
     #zwiekszanie liczby klikniec
@@ -38,7 +39,11 @@ def eventuser(event, game):
         #pokazywanie i chowanie menu
         if event.pos[0] > 16 and event.pos[0] < 66 and event.pos[1] > 16 and event.pos[1] < 32:
             game.menuvisible = not game.menuvisible
-        #klkianie w plansze
+        elif game.menuvisible and event.pos[0] > 100 and event.pos[0] < 118 and event.pos[1] > 110 and event.pos[1] < 128:
+            if game.theme == 'dark': game.theme = 'light'
+            else: game.theme = 'dark'
+            game.themechanged = True
+            #klkianie w plansze
         elif not game.menuvisible and event.pos[0] > game.borderleft and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
             lclick[0] = math.floor((event.pos[0]-game.borderleft)//game.blocksizex)
             lclick[1] = math.floor((event.pos[1]-game.bordertop )//game.blocksizey)

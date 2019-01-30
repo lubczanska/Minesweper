@@ -25,6 +25,7 @@ class Gamesettings:
         self.menuvisible = False                                            #widocznosc menu
         if(self.theme == "dark"): self.color = (51, 51, 51)                 #kolor wypelnienia
         else: self.color = (189, 189, 189)
+        self.themechanged = False
 
     def scanforwin(self):
 

@@ -63,10 +63,8 @@ class Textureclass:
         #textury przyciskow
         self.button = pygame.image.load(path + "button.gif")
         self.button.convert()
-        self.moon = pygame.image.load(path + "moon.gif")
-        self.moon.convert()
-        self.sun = pygame.image.load(path + "sun.gif")
-        self.sun.convert()
+        self.theme = pygame.image.load(path + "theme.gif")
+        self.theme.convert()
         #textury wyswietlacza
         self.time0 = pygame.image.load(path + "time0.gif")
         self.time0.convert()

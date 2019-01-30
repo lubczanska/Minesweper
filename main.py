@@ -16,6 +16,7 @@ pygame.init()                                                           #inicjal
 screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))  #stworzenie ekranu
 clock = pygame.time.Clock()                                             #stworzenie Zegara
 texture = Textureclass(game.theme)                                      #stworzenie obiektu z texturami
+#gray/white -> dark/dimgray
 sizex = InputBox(98, 47, 22, 17, 'gray', 'white')                       #wejscie w menu wysokosc planszy
 sizey = InputBox(98, 68, 22, 17, 'gray', 'white')                       #wejscie w menu szerokosc planszy
 bombs = InputBox(98, 89, 22, 17, 'gray', 'white')                       #wejscie w menu ilsco bomby
@@ -48,6 +49,12 @@ while game.running:
         #Eventy w wejsciach
         for box in boxes:
             box.handle_event(event)
+
+    if game.themechanged:
+        texture = Textureclass(game.theme)
+        if (game.theme == "dark"): game.color = (51, 51, 51)
+        else: game.color = (189, 189, 189)
+        game.themechange = False
 
     #rysowanie gry
     printborder(screen, game, texture)

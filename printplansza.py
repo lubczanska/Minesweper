@@ -54,10 +54,9 @@ def smileconverter(screen, game, texture):
         screen.blit(texture.won, (game.nx * 8 - 2, game.bordertop - 40))
 
 def printborder (screen, game, texture):
-    if game.theme == "light":
-        screen.fill((189, 189, 189))
-    else:
-        screen.fill((51, 51, 51))
+    #wypelnienie
+    screen.fill(game.color)
+
 
     #PRZYCISKI
     #narozniki
@@ -159,7 +158,4 @@ def printmenu (screen, game, texture):
     #wypelnienie
     pygame.draw.rect(screen, game.color, (28, 44, 96, 86))
     #przycisk do zmiany motywu
-    if game.theme == 'dark':
-        screen.blit(texture.sun, (100, 110))
-    else:
-        screen.blit(texture.moon, (100, 110))
+    screen.blit(texture.theme, (100, 110))
