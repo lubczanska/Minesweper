@@ -7,15 +7,15 @@ class Gamesettings:
         if(ny < 8): ny = 8
         #zmniejszanie liczby bomb do 1/3 kafelkow jesli ustawi sie ich liczbe wieksza niz ilosc kafelkow
         if(n > nx * ny): n = int(nx * ny / 3)
-        self.nx = nx                                                        #wysokosc planszy
-        self.ny = ny                                                        #szerokosc planszy
+        self.nx = nx                                                        #szerokosc planszy
+        self.ny = ny                                                        #wysokosc planszy
         self.n = n                                                          #ilosc bomb
         self.bordertop = bordertop                                          #y lewego gornego naroznika planszy
         self.borderleft = borderleft                                        #x lewego gornego naroznika planszy
         self.blocksizex = blocksizex                                        #szerokosc kafelka
         self.blocksizey = blocksizey                                        #wysokosc kafelka
         self.windowsizex = self.nx*blocksizex + borderleft * 2              #szerokosc okna
-        self.windowsizey = self.nx*blocksizey + bordertop + 12              #wysokosc okna
+        self.windowsizey = self.ny*blocksizey + bordertop + 12              #wysokosc okna
         self.clicks = 0                                                     #liczba klikniec
         self.clickedx = 0                                                   #x gdzie jest kliknieta mysz
         self.clickedy = 0                                                   #y gdzie jest kliknieta mysz
@@ -34,9 +34,9 @@ class Gamesettings:
 
         #sprawdzanie ile jest otwartych kafelkow
         opencells = 0
-        for a in self.tab:
-            for b in a:
-                if b > 9 and b < 20:
+        for y in self.tab:
+            for x in y:
+                if x > 9 and x < 20:
                     opencells += 1
 
         #wygrana
@@ -48,7 +48,7 @@ class Gamesettings:
 
     def reset(self):
         self.windowsizex = self.nx * self.blocksizex + self.borderleft * 2
-        self.windowsizey = self.nx * self.blocksizey + self.bordertop + 12
+        self.windowsizey = self.ny * self.blocksizey + self.bordertop + 12
         self.clicks = 0
         self.clickedx = 0
         self.clickedy = 0

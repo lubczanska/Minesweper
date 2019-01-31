@@ -2,7 +2,7 @@ import pygame
 
 
 class InputBox:
-    def __init__(self, x, y, w, h, editable=True, text='', transparent=False, fontsize = 13, colornotfocused =  (123, 123, 123), colorfocused = (255, 255, 255)):
+    def __init__(self, x, y, w, h, text='', editable=True, transparent=False, fontsize = 13, colornotfocused =  (123, 123, 123), colorfocused = (255, 255, 255)):
         self.rect = pygame.Rect(x, y, w, h)             #prostokat w ktorym bedzie wejscie
         self.colornotfocused = colornotfocused          #kolor kiedy pole nie aktywne
         self.colorfocused = colorfocused                #kolor kiedy pole aktywne
