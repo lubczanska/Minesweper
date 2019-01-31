@@ -6,7 +6,7 @@ class Gamesettings:
         if(nx < 8): nx = 8
         if(ny < 8): ny = 8
         #zmniejszanie liczby bomb do 1/3 kafelkow jesli ustawi sie ich liczbe wieksza niz ilosc kafelkow
-        if(n > nx * ny): n = int(nx * ny / 3)
+        if(n >= nx * ny / 2): n = int(nx * ny / 3)
         self.nx = nx                                                        #szerokosc planszy
         self.ny = ny                                                        #wysokosc planszy
         self.n = n                                                          #ilosc bomb
@@ -58,5 +58,6 @@ class Gamesettings:
         self.fclick = True
         self.running = True
         self.tab = [[0 for i in range(self.nx)] for j in range(self.ny)]
+        if (self.n >= self.nx * self.ny / 2): self.n = int(self.nx * self.ny / 3)
         return pygame.display.set_mode((self.windowsizex, self.windowsizey))
 
