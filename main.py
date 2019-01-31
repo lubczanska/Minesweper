@@ -32,12 +32,12 @@ gamebutton = InputBox(20, 15, 41, 16, "Game", False, True, 12)          #napis w
 multibutton = InputBox(game.nx * 16 - 35, 15, 35, 16, "Multi", False, True, 12)  #napis w menu motyw game.theme
 buttons = [gamebutton, multibutton]
 
-while game.running:
+while game.open:
     #zablokowanie odswiezania gry do 30 FPS
     clock.tick(30)
     #Czas gry
-    if(game.starttime): game_time = int(timer() - game.starttime)
-    else: game_time = 0
+    if(game.starttime) and game.running: game_time = int(timer() - game.starttime)
+    elif game.running: game_time = 0
     #Sprawdzanie wygranej
     game.scanforwin()
     #Animacja klikania
@@ -61,7 +61,7 @@ while game.running:
             eventuser(event, game, screen, boxes)
         #Zamkniecie gry
         if event.type == pygame.QUIT:
-            game.running = False
+            game.open = False
         #Eventy w wejsciach
         for box in boxes:
             box.handle_event(event)
@@ -85,5 +85,3 @@ while game.running:
         for box in boxes: box.draw(screen, game.theme)
         for text in texts: text.draw(screen, game.theme)
     pygame.display.flip()
-
-time.sleep(8)

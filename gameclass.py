@@ -23,7 +23,8 @@ class Gamesettings:
         self.theme = "dark"                                                 #motyw dark/light
         self.starttime = False                                              #czy wystartowac timer
         self.fclick = True                                                  #czy pierwszy klik w planszy
-        self.running = True                                                 #czy gra jest uruchomiona
+        self.running = True                                                 #czy mozna grac
+        self.open = True                                                    #czy gra jest uruchomiona
         self.tab = [[0 for i in range(self.nx)] for j in range(self.ny)]    #tablica z plansza
         self.menuvisible = False                                            #widocznosc menu
         if(self.theme == "dark"): self.color = (51, 51, 51)                 #kolor wypelnienia
