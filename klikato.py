@@ -97,7 +97,7 @@ def eventuser(event, game, screen, boxes):
             else: game.theme = 'dark'
             game.themechanged = True
         #klikanie w buzke - reset
-        if event.pos[0] > 78 and event.pos[0] < 103 and event.pos[1] > 41 and event.pos[1] < 76:
+        if event.pos[0] > game.borderleft + game.nx / 2 * game.blocksizex - 13 and event.pos[0] < game.borderleft + game.nx / 2 * game.blocksizex + 13 and event.pos[1] > 41 and event.pos[1] < 76:
             screen = game.reset()
         #klkianie w plansze
         elif not game.menuvisible and event.pos[0] > game.borderleft and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):

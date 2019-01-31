@@ -7,7 +7,7 @@ from gameclass import Gamesettings
 from textureclass import Textureclass
 from textfieldclass import InputBox
 
-nx = 16
+nx = 10
 ny = 10
 n = 10
 is_clicked = 0
