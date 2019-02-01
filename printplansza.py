@@ -46,16 +46,20 @@ def printplanszeszybko (screen, game, textury):
 
 
 
-def smileconverter(screen, game, texture):
+def smileconverter(screen, game, texture, button):
 
-    if game.running:
+    if button == 1 and pygame.mouse.get_pos()[0] > game.borderleft + game.nx / 2 * game.blocksizex - 13 and pygame.mouse.get_pos()[0] < game.borderleft + game.nx / 2 * game.blocksizex + 13 and pygame.mouse.get_pos()[1] > 41 and pygame.mouse.get_pos()[1] < 76:
+        screen.blit(texture.smileclicked, (game.nx * 8 - 2, game.bordertop - 40))
+    elif game.running and button > 0:
+        screen.blit(texture.ooh, (game.nx * 8 - 2, game.bordertop - 40))
+    elif game.running:
         screen.blit(texture.smile, (game.nx * 8 - 2, game.bordertop - 40))
     elif game.bombsvisible:
         screen.blit(texture.lost, (game.nx * 8 - 2, game.bordertop - 40))
     else:
         screen.blit(texture.won, (game.nx * 8 - 2, game.bordertop - 40))
 
-def printborder (screen, game, texture):
+def printborder (screen, game, texture, button):
     #wypelnienie
     screen.fill(game.color)
 
@@ -64,8 +68,14 @@ def printborder (screen, game, texture):
     screen.blit(texture.bordertl, (0, 0))
     screen.blit(texture.bordertr, (game.nx * 16 + game.borderleft, 0))
     #przyciski
-    screen.blit(texture.button, (16, 16))
-    screen.blit(texture.button, (game.nx * 16 + game.borderleft - 54, 16))
+    if game.running and button == 1 and pygame.mouse.get_pos()[0] > 16 and pygame.mouse.get_pos()[0] < 66 and pygame.mouse.get_pos()[1] > 16 and pygame.mouse.get_pos()[1] < 32:
+        screen.blit(texture.buttonclicked, (16, 16))
+    else:
+        screen.blit(texture.button, (16, 16))
+    if game.running and button == 1 and pygame.mouse.get_pos()[0] > game.nx * 16 + game.borderleft - 54 and pygame.mouse.get_pos()[0] < game.nx * 16 + game.borderleft - 4 and pygame.mouse.get_pos()[1] > 16 and pygame.mouse.get_pos()[1] < 32:
+        screen.blit(texture.buttonclicked, (game.nx * 16 + game.borderleft - 54, 16))
+    else:
+        screen.blit(texture.button, (game.nx * 16 + game.borderleft - 54, 16))
     #gorna belka
     for x in range(game.nx*4):
         screen.blit(texture.bordertb, (4 * x + game.borderleft, 0))

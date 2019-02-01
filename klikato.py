@@ -5,12 +5,12 @@ from timeit import default_timer as timer
 from textureclass import Textureclass
 
 def clicked(mousex, mousey, button, game):
-    if button == 1:
+    if button == 1 and game.running:
         #chowa poprzednie pole
         if game.tab[game.clickedy][game.clickedx] >= 30:
             game.tab[game.clickedy][game.clickedx] -= 30
         #sprawdza czy klikane jest w plansze
-        if mousex >= game.borderleft and mousex <= game.windowsizex - game.borderleft and mousey >= game.bordertop and mousey <= game.windowsizey - game.borderleft:
+        if mousex >= game.borderleft and mousex < game.windowsizex - game.borderleft and mousey >= game.bordertop and mousey < game.windowsizey - game.borderleft:
             game.clickedx = (mousex - game.borderleft) // 16
             game.clickedy = (mousey - game.bordertop) // 16
             #animacja tu sie dzieje
@@ -24,7 +24,7 @@ def clicked(mousex, mousey, button, game):
                     if game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] >= 30:
                         game.tab[game.clickedy + (y - 1)][game.clickedx  + (x - 1)] -= 30
         #sprawdza czy klikane jest w plansze
-        if mousex >= game.borderleft and mousex <= game.windowsizex - game.borderleft and mousey >= game.bordertop and mousey <= game.windowsizey - game.borderleft:
+        if mousex >= game.borderleft and mousex < game.windowsizex - game.borderleft and mousey >= game.bordertop and mousey < game.windowsizey - game.borderleft:
             game.clickedx = (mousex - game.borderleft) // 16
             game.clickedy = (mousey - game.bordertop) // 16
             #animacja tu sie dzieje
@@ -100,7 +100,7 @@ def eventuser(event, game, screen, boxes):
         if event.pos[0] > game.borderleft + game.nx / 2 * game.blocksizex - 13 and event.pos[0] < game.borderleft + game.nx / 2 * game.blocksizex + 13 and event.pos[1] > 41 and event.pos[1] < 76:
             screen = game.reset()
         #klkianie w plansze
-        elif not game.menuvisible and event.pos[0] > game.borderleft and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
+        elif game.running and not game.menuvisible and event.pos[0] > game.borderleft and (event.pos[0] < game.windowsizex-game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey-game.borderleft):
             lclick[0] = math.floor((event.pos[0]-game.borderleft)//game.blocksizex)
             lclick[1] = math.floor((event.pos[1]-game.bordertop )//game.blocksizey)
             #generowanie planszy po pierwszym kliknieciu
@@ -112,7 +112,7 @@ def eventuser(event, game, screen, boxes):
             leftclick(lclick, game)
 
     # srodkowy klik
-    if event.button == 2:
+    if event.button == 2 and game.running:
         # klikniecie w plansze
         if (not game.menuvisible and event.pos[0] > game.borderleft) and (
                 event.pos[0] < game.windowsizex - game.borderleft) and (event.pos[1] > game.bordertop) and (
@@ -127,7 +127,7 @@ def eventuser(event, game, screen, boxes):
             scrollclick(sclick, game)
 
     #prawy klik
-    if event.button == 3:
+    if event.button == 3 and game.running:
         #klikniecie w plansze
         if (not game.menuvisible and event.pos[0] > game.borderleft) and (event.pos[0] < game.windowsizex - game.borderleft) and (event.pos[1] > game.bordertop) and (event.pos[1] < game.windowsizey - game.borderleft):
             rclick[0] = int((event.pos[0]-game.borderleft)//game.blocksizex)

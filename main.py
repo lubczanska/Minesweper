@@ -56,7 +56,7 @@ while game.open:
             for x in range(3):
                 for y in range(3):
                     if game.clickedx + (x - 1) >= 0 and game.clickedx + (x - 1) < game.nx and game.clickedy + (y - 1) >= 0 and game.clickedy + (y - 1) < game.ny:
-                        if game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] >= 30:
+                        if game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] >= 30 and game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] != 40:
                             game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] -= 30
             eventuser(event, game, screen, boxes)
         #Zamkniecie gry
@@ -73,11 +73,11 @@ while game.open:
         game.themechange = False
 
     #rysowanie gry
-    printborder(screen, game, texture)
+    printborder(screen, game, texture, is_clicked)
     printplanszeszybko(screen, game, texture)
     printcyferki(0, game.clicks, screen, game, texture)
     printcyferki(1, game_time, screen, game, texture)
-    smileconverter(screen, game, texture)
+    smileconverter(screen, game, texture, is_clicked)
     for button in buttons:
         button.draw(screen, game.theme)
     if game.menuvisible:
