@@ -56,7 +56,7 @@ def rightclick(rclick, game):
     if game.tab[rclick[1]][rclick[0]] < 10:
         game.tab[rclick[1]][rclick[0]] += 20
     #zabranie flagi
-    elif game.tab[rclick[1]][rclick[0]] >= 20:
+    elif game.tab[rclick[1]][rclick[0]] >= 20 and game.tab[rclick[1]][rclick[0]] < 30:
         game.tab[rclick[1]][rclick[0]] -= 20
 
 def scrollclick(sclick, game):
