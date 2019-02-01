@@ -5,7 +5,7 @@ from timeit import default_timer as timer
 from textureclass import Textureclass
 
 def clicked(mousex, mousey, button, game):
-    if button == 1 and game.running:
+    if button == 1 and game.running and not game.menuvisible:
         #chowa poprzednie pole
         if game.tab[game.clickedy][game.clickedx] >= 30:
             game.tab[game.clickedy][game.clickedx] -= 30
