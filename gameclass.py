@@ -29,7 +29,7 @@ class Gamesettings:
         if(self.theme == "dark"): self.color = (51, 51, 51)                 #kolor wypelnienia
         else: self.color = (189, 189, 189)
         self.themechanged = False
-
+        self.serverip = "192.168.0.1"
     def scanforwin(self):
 
         #sprawdzanie ile jest otwartych kafelkow
