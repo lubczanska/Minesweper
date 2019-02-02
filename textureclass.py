@@ -41,6 +41,10 @@ class Textureclass:
         self.lost.convert()
         self.smile = pygame.image.load(path + "facesmile.gif")
         self.smile.convert()
+        self.smileclicked = pygame.image.load(path + "facesmileclicked.gif")
+        self.smileclicked.convert()
+        self.ooh = pygame.image.load(path + "faceooh.gif")
+        self.ooh.convert()
         #textury krawedzi
         self.borderl = pygame.image.load(path + "borderl.gif")
         self.borderl.convert()
@@ -63,6 +67,8 @@ class Textureclass:
         #textury przyciskow
         self.button = pygame.image.load(path + "button.gif")
         self.button.convert()
+        self.buttonclicked = pygame.image.load(path + "buttonshadow.gif")
+        self.buttonclicked.convert()
         self.theme = pygame.image.load(path + "theme.gif")
         self.theme.convert()
         #textury wyswietlacza

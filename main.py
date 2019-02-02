@@ -19,25 +19,25 @@ pygame.init()                                                           #inicjal
 screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))  #stworzenie ekranu
 clock = pygame.time.Clock()                                             #stworzenie Zegara
 texture = Textureclass(game.theme)                                      #stworzenie obiektu z texturami
-sizex = InputBox(98, 47, 22, 17)                       #wejscie w menu wysokosc planszy
-sizey = InputBox(98, 68, 22, 17)                       #wejscie w menu szerokosc planszy
-bombs = InputBox(98, 89, 22, 17)                       #wejscie w menu ilsco bomby
+sizex = InputBox(98, 47, 22, 17, "10")                                        #wejscie w menu wysokosc planszy
+sizey = InputBox(98, 68, 22, 17, "10")                                        #wejscie w menu szerokosc planszy
+bombs = InputBox(98, 89, 22, 17, "10")                                        #wejscie w menu ilsco bomby
 boxes = [sizex, sizey, bombs]
-sizextext = InputBox(31, 47, 60, 17, False, "Height")  #napis w menu wysoksc nx
-sizeytext = InputBox(31, 68, 60, 17, False, "Width")   #napis w menu szerokosc ny
-bombstext = InputBox(31, 89, 60, 17, False, "Bombs")   #napis w menu ilsoc bomb n
-themetext = InputBox(31, 110, 60, 17, False, "Theme")  #napis w menu motyw game.theme
+sizextext = InputBox(31, 47, 60, 17, "Height", False)                   #napis w menu wysoksc nx
+sizeytext = InputBox(31, 68, 60, 17, "Width", False)                    #napis w menu szerokosc ny
+bombstext = InputBox(31, 89, 60, 17, "Bombs", False)                    #napis w menu ilsoc bomb n
+themetext = InputBox(31, 110, 60, 17, "Theme", False)                   #napis w menu motyw game.theme
 texts = [sizextext, sizeytext, bombstext, themetext]
-gamebutton = InputBox(20, 15, 41, 16, False, "Game", True, 12)   #napis w menu ilsoc bomb n
-multibutton = InputBox(game.nx * 16 - 35, 15, 35, 16, False, "Multi", True, 12)  #napis w menu motyw game.theme
+gamebutton = InputBox(20, 15, 41, 16, "Game", False, True, 12)          #napis w menu ilsoc bomb n
+multibutton = InputBox(game.nx * 16 - 35, 15, 35, 16, "Multi", False, True, 12)  #napis w menu motyw game.theme
 buttons = [gamebutton, multibutton]
 
-while game.running:
+while game.open:
     #zablokowanie odswiezania gry do 30 FPS
     clock.tick(30)
     #Czas gry
-    if(game.starttime): game_time = int(timer() - game.starttime)
-    else: game_time = 0
+    if(game.starttime) and game.running: game_time = int(timer() - game.starttime)
+    elif game.running: game_time = 0
     #Sprawdzanie wygranej
     game.scanforwin()
     #Animacja klikania
@@ -50,18 +50,18 @@ while game.running:
             if event.button == 1 or event.button == 2:
                 is_clicked = event.button
             elif event.button == 3:
-                eventuser(event, game)
+                eventuser(event, game, screen, boxes )
         elif event.type == pygame.MOUSEBUTTONUP and is_clicked > 0:
             is_clicked = 0
-            for a in range(3):
-                for b in range(3):
-                    if game.clickedx + (a - 1) >= 0 and game.clickedx + (a - 1) < game.nx and game.clickedy + (b - 1) >= 0 and game.clickedy + (b - 1) < game.ny:
-                        if game.tab[game.clickedx + (a - 1)][game.clickedy + (b - 1)] >= 30:
-                            game.tab[game.clickedx + (a - 1)][game.clickedy + (b - 1)] -= 30
-            eventuser(event, game, screen)
+            for x in range(3):
+                for y in range(3):
+                    if game.clickedx + (x - 1) >= 0 and game.clickedx + (x - 1) < game.nx and game.clickedy + (y - 1) >= 0 and game.clickedy + (y - 1) < game.ny:
+                        if game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] >= 30 and game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] != 40:
+                            game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] -= 30
+            eventuser(event, game, screen, boxes)
         #Zamkniecie gry
         if event.type == pygame.QUIT:
-            game.running = False
+            game.open = False
         #Eventy w wejsciach
         for box in boxes:
             box.handle_event(event)
@@ -73,11 +73,11 @@ while game.running:
         game.themechange = False
 
     #rysowanie gry
-    printborder(screen, game, texture)
+    printborder(screen, game, texture, is_clicked)
     printplanszeszybko(screen, game, texture)
     printcyferki(0, game.clicks, screen, game, texture)
     printcyferki(1, game_time, screen, game, texture)
-    smileconverter(screen, game, texture)
+    smileconverter(screen, game, texture, is_clicked)
     for button in buttons:
         button.draw(screen, game.theme)
     if game.menuvisible:
@@ -85,5 +85,3 @@ while game.running:
         for box in boxes: box.draw(screen, game.theme)
         for text in texts: text.draw(screen, game.theme)
     pygame.display.flip()
-
-time.sleep(2)
