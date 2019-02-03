@@ -44,10 +44,11 @@ while game.open:
         winorlos = getlos()
         if winorlos == 1:
             print("lost")
-            game.open = not game.open
+            game.bombsvisible = True
+            game.running = not game.running
         elif winorlos == 2:
-            print("won"):
-            game.open = not game.open
+            print("won")
+            game.running = not game.running
 
     #zablokowanie odswiezania gry do 30 FPS
     clock.tick(30)

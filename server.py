@@ -19,5 +19,16 @@ if __name__ == '__main__':
     s.sendto(data, (client1, PORT))
     s.sendto(data, (client2, PORT))
 
+    sock = socket.socket(socket.AF_INET,  # Internet
+                         socket.SOCK_DGRAM)  # UDP
+    sock.bind((HOSt, PORT))
+    while True:
+        data, addr = sock.recvfrom(1024)  # buffer size is 1024 bytes
+        if addr == client1:
+            sock.sendto(data, (client2, PORT))
+        elif addr == client2:
+            sock.sendto(data, (client1, PORT))
+
+
 
 

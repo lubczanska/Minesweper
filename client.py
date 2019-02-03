@@ -36,6 +36,6 @@ def getlos():
 def sendwin(game, string):
     UDP_IP = game.serverip
     UDP_PORT = 1111
-    MESSAGE = string
+    MESSAGE = string.encode()
     sock = socket.socket(socket.AF_INET,  socket.SOCK_DGRAM)  # UDP
     sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
