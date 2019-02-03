@@ -33,7 +33,7 @@ class Gamesettings:
 
 
         self.themechanged = False
-        self.serverip = "192.168.0.1"
+        self.serverip = "192.168.0.106"
         self.ismulti = 0
 
 
