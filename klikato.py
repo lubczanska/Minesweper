@@ -84,6 +84,11 @@ def eventuser(event, game, screen, boxes):
 
     #lewy klik
     if event.button == 1:
+        #obsluga multiplayera
+        if event.pos[0] > game.nx * 16 + game.borderleft - 54 and event.pos[0] < game.nx * 16 + game.borderleft - 54 + 50  and event.pos[1] > 16 and event.pos[1] < 32:
+            screen = game.reset()
+            game.ismulti = 1
+
         #pokazywanie i chowanie menu
         if event.pos[0] > 16 and event.pos[0] < 66 and event.pos[1] > 16 and event.pos[1] < 32:
             game.menuvisible = not game.menuvisible

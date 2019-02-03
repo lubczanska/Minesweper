@@ -6,7 +6,7 @@ from printplansza import printplanszeszybko, printborder, printcyferki, smilecon
 from gameclass import Gamesettings
 from textureclass import Textureclass
 from textfieldclass import InputBox
-
+from client import waitforboard, getlos
 nx = 10
 ny = 10
 n = 10
@@ -31,8 +31,24 @@ texts = [sizextext, sizeytext, bombstext, themetext]
 gamebutton = InputBox(20, 15, 41, 16, "Game", False, True, 12)          #napis w menu ilsoc bomb n
 multibutton = InputBox(game.nx * 16 - 35, 15, 35, 16, "Multi", False, True, 12)  #napis w menu motyw game.theme
 buttons = [gamebutton, multibutton]
+multiplayer = 0
+
+
+
 
 while game.open:
+    if game.ismulti == 1:
+        game = waitforboard()
+        game.ismulti == 2
+    if game.ismulti == 2:
+        winorlos = getlos()
+        if winorlos == 1:
+            print("lost")
+            game.open = not game.open
+        elif winorlos == 2:
+            print("won"):
+            game.open = not game.open
+
     #zablokowanie odswiezania gry do 30 FPS
     clock.tick(30)
     #Czas gry

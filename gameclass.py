@@ -1,4 +1,5 @@
 import pygame
+from client import sendwin
 class Gamesettings:
 
     def __init__(self, nx, ny, n, bordertop, borderleft, blocksizex, blocksizey):
@@ -29,8 +30,15 @@ class Gamesettings:
         self.menuvisible = False                                            #widocznosc menu
         if(self.theme == "dark"): self.color = (51, 51, 51)                 #kolor wypelnienia
         else: self.color = (189, 189, 189)
+
+
         self.themechanged = False
         self.serverip = "192.168.0.1"
+        self.ismulti = 0
+
+
+
+
     def scanforwin(self):
 
         #sprawdzanie ile jest otwartych kafelkow
@@ -42,9 +50,11 @@ class Gamesettings:
 
         #wygrana
         if opencells + self.n == self.nx * self.ny:
+            sendwin(self, "lost")
             self.running = False
         #przegrana
         elif self.bombsvisible:
+            sendwin(self, "won")
             self.running = False
 
     def reset(self):
