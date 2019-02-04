@@ -1,6 +1,6 @@
 import random
 
-def generujtablice(bx, by, game):
+def generujtablice(bx, by, game, multi):
 
     for n in range(game.n):
         # losowanie koordynatow bomby
@@ -8,9 +8,10 @@ def generujtablice(bx, by, game):
         ry = random.randint(0, game.ny - 1)
 
         #sprawdzanie czy wylosowane koordynaty nie sa pod klikiem lub nie zawieraja bomby
-        while rx == bx or ry == by or game.tab[ry][rx] > 8:
-            rx = random.randint(0, game.nx - 1)
-            ry = random.randint(0, game.ny - 1)
+        if not multi:
+            while rx == bx or ry == by or game.tab[ry][rx] > 8:
+                rx = random.randint(0, game.nx - 1)
+                ry = random.randint(0, game.ny - 1)
 
         # wstawianie bomby na koordynaty
         game.tab[ry][rx] = 9

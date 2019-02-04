@@ -76,7 +76,7 @@ def scrollclick(sclick, game):
                         odkrywajtablice(game, sclick[0] + (x - 1), sclick[1] + (y - 1))
 
 
-def eventuser(event, game, screen, boxes):
+def eventuser(event, game, screen, boxes, multi):
     #koordynaty klikniecia
     rclick = [0, 1]     #[x, y]
     lclick = [0, 1]     #[x, y]
@@ -110,7 +110,7 @@ def eventuser(event, game, screen, boxes):
             lclick[1] = math.floor((event.pos[1]-game.bordertop )//game.blocksizey)
             #generowanie planszy po pierwszym kliknieciu
             if(game.fclick == 1):
-                generujtablice(lclick[0], lclick[1], game)
+                generujtablice(lclick[0], lclick[1], game, multi)
                 game.starttime = timer()
                 game.fclick = False
 

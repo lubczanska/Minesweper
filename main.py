@@ -6,7 +6,8 @@ from printplansza import printplanszeszybko, printborder, printcyferki, smilecon
 from gameclass import Gamesettings
 from textureclass import Textureclass
 from textfieldclass import InputBox
-from client import waitforboard, getlos
+from multihandler import getboard, getlosclient, getlosserver, sendboard, sendlosclient, sendlosserver
+IS_MULTI = 0
 nx = 10
 ny = 10
 n = 10
@@ -31,26 +32,39 @@ texts = [sizextext, sizeytext, bombstext, themetext]
 gamebutton = InputBox(20, 15, 41, 16, "Game", False, True, 12)          #napis w menu ilsoc bomb n
 multibutton = InputBox(game.nx * 16 - 35, 15, 35, 16, "Multi", False, True, 12)  #napis w menu motyw game.theme
 buttons = [gamebutton, multibutton]
-multiplayer = 0
 
-
-
-
+is_client = 1
+clientip = "192.168.0.102"
+winorlos = 2
 while game.open:
-    if game.ismulti == 1:
-        game = waitforboard()
-        game.ismulti == 2
-    if game.ismulti == 2:
-        winorlos = getlos()
-        if winorlos == 1:
-            print("lost")
-            game.bombsvisible = True
-            game.running = not game.running
-        elif winorlos == 2:
-            print("won")
-            game.running = not game.running
+    if IS_MULTI:
+        if is_client:
+            if game.running == 0:
+                game = getboard()
+                game.running = 1
+            else:
+                winorlos = getlosclient()
+                if winorlos == 0:
+                    game.bombsvisible =1
+                elif winorlos == 1:
+                    game.running = 0
+                sendlosclient(game)
 
-    #zablokowanie odswiezania gry do 30 FPS
+        else:
+            if game.running == 0:
+                sendboard(clientip, game)
+                game.running = 1
+            else:
+                winorlos = getlosserver()
+                if winorlos == 0:
+                    game.bombsvisible = 1
+                elif winorlos == 1:
+                    game.running = 0
+                sendlosserver(game, clientip)
+
+
+
+                    #zablokowanie odswiezania gry do 30 FPS
     clock.tick(30)
     #Czas gry
     if(game.starttime) and game.running: game_time = int(timer() - game.starttime)
@@ -67,7 +81,7 @@ while game.open:
             if event.button == 1 or event.button == 2:
                 is_clicked = event.button
             elif event.button == 3:
-                eventuser(event, game, screen, boxes )
+                eventuser(event, game, screen, boxes, IS_MULTI )
         elif event.type == pygame.MOUSEBUTTONUP and is_clicked > 0:
             is_clicked = 0
             for x in range(3):
@@ -75,7 +89,7 @@ while game.open:
                     if game.clickedx + (x - 1) >= 0 and game.clickedx + (x - 1) < game.nx and game.clickedy + (y - 1) >= 0 and game.clickedy + (y - 1) < game.ny:
                         if game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] >= 30 and game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] != 40:
                             game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] -= 30
-            eventuser(event, game, screen, boxes)
+            eventuser(event, game, screen, boxes, IS_MULTI)
         #Zamkniecie gry
         if event.type == pygame.QUIT:
             game.open = False

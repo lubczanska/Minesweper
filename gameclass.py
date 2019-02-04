@@ -1,5 +1,5 @@
 import pygame
-from client import sendwin
+
 class Gamesettings:
 
     def __init__(self, nx, ny, n, bordertop, borderleft, blocksizex, blocksizey):
@@ -50,13 +50,14 @@ class Gamesettings:
 
         #wygrana
         if opencells + self.n == self.nx * self.ny:
-            sendwin(self, "lost")
+
             self.running = False
+            return 0
         #przegrana
         elif self.bombsvisible:
-            sendwin(self, "won")
-            self.running = False
 
+            self.running = False
+            return 1
     def reset(self):
         self.windowsizex = self.nx * self.blocksizex + self.borderleft * 2
         self.windowsizey = self.ny * self.blocksizey + self.bordertop + 12
