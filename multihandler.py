@@ -3,13 +3,13 @@ import gameclass
 import pickle
 from planszator import generujtablice
 def sendboard(clientip, game):
-    myip = "127.0.0.0"
+    myip = '127.0.0.0'
     port = 1111
     serverSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     serverSock.bind((myip, port))
-    generujtablice(0,0,game, 1)
+    generujtablice(0, 0, game, 1)
     data = pickle.dumps(game)
-    serverSock.sendto(data, (port, clientip))
+    serverSock.sendto(data, (clientip, port))
 def getboard():
     myip = "127.0.0.0"
     port = 1111
@@ -28,8 +28,13 @@ def sendlosserver(game, clientip):
     serverSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     serverSock.bind((myip, port))
     data = game.scanforwin()
-    serverSock.sendto(data, (port, clientip))
-
+    try:
+        if type(data) is None:
+            print("lol")
+        else:
+            serverSock.sendto(data, (port, clientip))
+    except:
+        print("lol")
 
 def getlosclient():
 
@@ -45,5 +50,10 @@ def getlosserver():
     serverSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     serverSock.bind((myip, port))
     serverSock.setblocking(0)
-    data, addr = serverSock.recvfrom(1024)
-    return data
+    try:
+        data, addr = serverSock.recvfrom(1024)
+        if type(data) == None:
+            data = 2
+    except:
+        data = 2
+    return 2

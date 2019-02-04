@@ -7,7 +7,7 @@ from gameclass import Gamesettings
 from textureclass import Textureclass
 from textfieldclass import InputBox
 from multihandler import getboard, getlosclient, getlosserver, sendboard, sendlosclient, sendlosserver
-IS_MULTI = 0
+IS_MULTI = 1
 nx = 10
 ny = 10
 n = 10
@@ -33,8 +33,8 @@ gamebutton = InputBox(20, 15, 41, 16, "Game", False, True, 12)          #napis w
 multibutton = InputBox(game.nx * 16 - 35, 15, 35, 16, "Multi", False, True, 12)  #napis w menu motyw game.theme
 buttons = [gamebutton, multibutton]
 
-is_client = 1
-clientip = "192.168.0.102"
+is_client = 0
+clientip = '192.168.0.140'
 winorlos = 2
 while game.open:
     if IS_MULTI:
