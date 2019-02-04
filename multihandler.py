@@ -14,6 +14,8 @@ def getboard():
     myip = "127.0.0.0"
     port = 1111
     clientSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    clientSock.bind((127.0.0.0, 1111))
+
     data, addr = clientSock.recvfrom(10240)
     return pickle.loads(data)
 def sendlosclient(game):
@@ -40,6 +42,7 @@ def getlosclient():
 
     port = 1111
     clientSock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    clientSock.bind((127.0.0.0, 1111))
     data, addr = clientSock.recvfrom(10240)
     return data
 def getlosserver():
@@ -51,7 +54,7 @@ def getlosserver():
     serverSock.bind((myip, port))
     serverSock.setblocking(0)
     try:
-        data, addr = serverSock.recvfrom(1024)
+        data, addr = serverSock.recvfrom(1111)
         if type(data) == None:
             data = 2
     except:
