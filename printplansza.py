@@ -72,10 +72,10 @@ def printborder (screen, game, texture, button):
         screen.blit(texture.buttonclicked, (16, 16))
     else:
         screen.blit(texture.button, (16, 16))
-    if button == 1 and pygame.mouse.get_pos()[0] > game.nx * 16 + game.borderleft - 54 and pygame.mouse.get_pos()[0] < game.nx * 16 + game.borderleft - 4 and pygame.mouse.get_pos()[1] > 16 and pygame.mouse.get_pos()[1] < 32:
-        screen.blit(texture.buttonclicked, (game.nx * 16 + game.borderleft - 54, 16))
-    else:
-        screen.blit(texture.button, (game.nx * 16 + game.borderleft - 54, 16))
+    #if button == 1 and pygame.mouse.get_pos()[0] > game.nx * 16 + game.borderleft - 54 and pygame.mouse.get_pos()[0] < game.nx * 16 + game.borderleft - 4 and pygame.mouse.get_pos()[1] > 16 and pygame.mouse.get_pos()[1] < 32:
+    #    screen.blit(texture.buttonclicked, (game.nx * 16 + game.borderleft - 54, 16))
+    #else:
+    #    screen.blit(texture.button, (game.nx * 16 + game.borderleft - 54, 16))
     #gorna belka
     for x in range(game.nx*4):
         screen.blit(texture.bordertb, (4 * x + game.borderleft, 0))

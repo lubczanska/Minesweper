@@ -2,7 +2,7 @@ import math
 from  odkrywane import odkrywajtablice
 from planszator import generujtablice
 from timeit import default_timer as timer
-from textureclass import Textureclass
+from textfieldclass import InputBox
 
 def clicked(mousex, mousey, button, game):
     if button == 1 and game.running and not game.menuvisible:
@@ -76,7 +76,7 @@ def scrollclick(sclick, game):
                         odkrywajtablice(game, sclick[0] + (x - 1), sclick[1] + (y - 1))
 
 
-def eventuser(event, game, screen, boxes):
+def eventuser(event, game, boxes, buttons):
     #koordynaty klikniecia
     rclick = [0, 1]     #[x, y]
     lclick = [0, 1]     #[x, y]
@@ -96,6 +96,8 @@ def eventuser(event, game, screen, boxes):
                 game.ny = int(boxes[0].text)
                 game.nx = int(boxes[1].text)
                 game.n  = int(boxes[2].text)
+                #buttons[1] = InputBox(game.nx * 16 - 35, 15, 35, 16, "Multi", False, True, 12)
+  
                 screen = game.reset()
         elif game.menuvisible and event.pos[0] > 100 and event.pos[0] < 118 and event.pos[1] > 110 and event.pos[1] < 128:
             if game.theme == 'dark': game.theme = 'light'

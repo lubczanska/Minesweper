@@ -9,7 +9,7 @@ from textfieldclass import InputBox
 from client import waitforboard, getlos
 nx = 10
 ny = 10
-n = 10
+n = 5
 is_clicked = 0
 last_x = 0
 last_y = 0
@@ -30,11 +30,8 @@ themetext = InputBox(31, 110, 60, 17, "Theme", False)                   #napis w
 texts = [sizextext, sizeytext, bombstext, themetext]
 gamebutton = InputBox(20, 15, 41, 16, "Game", False, True, 12)          #napis w menu ilsoc bomb n
 multibutton = InputBox(game.nx * 16 - 35, 15, 35, 16, "Multi", False, True, 12)  #napis w menu motyw game.theme
-buttons = [gamebutton, multibutton]
+buttons = [gamebutton]
 multiplayer = 0
-
-
-
 
 while game.open:
     if game.ismulti == 1:
@@ -64,7 +61,7 @@ while game.open:
             if event.button == 1 or event.button == 2:
                 is_clicked = event.button
             elif event.button == 3:
-                eventuser(event, game, screen, boxes )
+                eventuser(event, game, boxes, buttons)
         elif event.type == pygame.MOUSEBUTTONUP and is_clicked > 0:
             is_clicked = 0
             for x in range(3):
@@ -72,7 +69,7 @@ while game.open:
                     if game.clickedx + (x - 1) >= 0 and game.clickedx + (x - 1) < game.nx and game.clickedy + (y - 1) >= 0 and game.clickedy + (y - 1) < game.ny:
                         if game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] >= 30 and game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] != 40:
                             game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] -= 30
-            eventuser(event, game, screen, boxes)
+            eventuser(event, game, boxes, buttons)
         #Zamkniecie gry
         if event.type == pygame.QUIT:
             game.open = False
