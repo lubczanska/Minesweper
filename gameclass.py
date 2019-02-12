@@ -50,11 +50,11 @@ class Gamesettings:
 
         #wygrana
         if opencells + self.n == self.nx * self.ny:
-            sendwin(self, "lost")
+            #sendwin(self, "lost")
             self.running = False
         #przegrana
         elif self.bombsvisible:
-            sendwin(self, "won")
+            #sendwin(self, "won")
             self.running = False
 
     def reset(self):
