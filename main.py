@@ -29,8 +29,14 @@ bombstext = InputBox(31, 89, 60, 17, "Bombs", False)                    #napis w
 themetext = InputBox(31, 110, 60, 17, "Theme", False)                   #napis w menu motyw game.theme
 texts = [sizextext, sizeytext, bombstext, themetext]
 gamebutton = InputBox(20, 15, 41, 16, "Game", False, True, 12)          #napis w menu ilsoc bomb n
+<<<<<<< Updated upstream
 multibutton = InputBox(game.nx * 16 - 35, 15, 35, 16, "Multi", False, True, 12)  #napis w menu motyw game.theme
 buttons = [gamebutton, multibutton]
+=======
+scorebutton = InputBox(game.nx * 8 - 8, 15, 41, 16, "Score", False, True, 12)          #napis w menu ilsoc bomb n
+multibutton = InputBox(game.nx * 16 - 36, 15, 35, 16, "Multi", False, True, 12)  #napis w menu motyw game.theme
+buttons = [gamebutton, scorebutton, multibutton]
+>>>>>>> Stashed changes
 multiplayer = 0
 
 

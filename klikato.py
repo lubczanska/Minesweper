@@ -96,6 +96,11 @@ def eventuser(event, game, screen, boxes):
                 game.ny = int(boxes[0].text)
                 game.nx = int(boxes[1].text)
                 game.n  = int(boxes[2].text)
+<<<<<<< Updated upstream
+=======
+                buttons[1] = InputBox(game.nx * 8 - 8, 15, 35, 16, "Score", False, True, 12)
+                buttons[2] = InputBox(game.nx * 16 - 36, 15, 35, 16, "Multi", False, True, 12)
+>>>>>>> Stashed changes
                 screen = game.reset()
         elif game.menuvisible and event.pos[0] > 100 and event.pos[0] < 118 and event.pos[1] > 110 and event.pos[1] < 128:
             if game.theme == 'dark': game.theme = 'light'

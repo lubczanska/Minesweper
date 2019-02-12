@@ -72,6 +72,15 @@ def printborder (screen, game, texture, button):
         screen.blit(texture.buttonclicked, (16, 16))
     else:
         screen.blit(texture.button, (16, 16))
+<<<<<<< Updated upstream
+=======
+    #(game.nx * 8 - 2, game.bordertop - 40)
+    if button == 1 and pygame.mouse.get_pos()[0] > game.nx * 8 + game.borderleft - 25 and pygame.mouse.get_pos()[0] < game.nx * 8 + game.borderleft + 25 and pygame.mouse.get_pos()[1] > 16 and pygame.mouse.get_pos()[1] < 32:
+        screen.blit(texture.buttonclicked, (game.nx * 8 + game.borderleft - 25, 16))
+    else:
+        screen.blit(texture.button, (game.nx * 8 + game.borderleft - 25, 16))
+
+>>>>>>> Stashed changes
     if button == 1 and pygame.mouse.get_pos()[0] > game.nx * 16 + game.borderleft - 54 and pygame.mouse.get_pos()[0] < game.nx * 16 + game.borderleft - 4 and pygame.mouse.get_pos()[1] > 16 and pygame.mouse.get_pos()[1] < 32:
         screen.blit(texture.buttonclicked, (game.nx * 16 + game.borderleft - 54, 16))
     else:
