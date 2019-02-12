@@ -1,5 +1,4 @@
 import math
-
 from  odkrywane import odkrywajtablice
 from planszator import generujtablice
 from timeit import default_timer as timer
@@ -17,7 +16,7 @@ def clicked(mousex, mousey, button, game):
             #animacja tu sie dzieje
             if game.tab[game.clickedy][game.clickedx] <= 9:
                 game.tab[game.clickedy][game.clickedx] += 30
-    if button == 2 and game.running and not game.menuvisible:
+    if button == 2:
         #chowa poprzednie pole
         for x in range(3):
             for y in range(3):
@@ -62,25 +61,19 @@ def rightclick(rclick, game):
 
 def scrollclick(sclick, game):
     is_clear = 1
-    flags = 0
     if game.tab[sclick[1]][sclick[0]] >= 11 and game.tab[sclick[1]][sclick[0]] <= 18:
         # sprawdza czy wszystkie bomby wokol oznaczone
         for x in range(3):
             for y in range(3):
                 if game.clickedx + (x - 1) >= 0 and game.clickedx + (x - 1) < game.nx and game.clickedy + (y - 1) >= 0 and game.clickedy + (y - 1) < game.ny:
-                    if game.tab[sclick[0] + (x - 1)][sclick[1] + (y - 1)] >= 20 and game.tab[sclick[0] + (x - 1)][sclick[1] + (y - 1)] <= 29:
-                        flags += 1
-        if not flags == game.tab[sclick[1]][sclick[0]] % 10:
-            is_clear == 0
+                    if game.tab[sclick[1] + (y - 1)][sclick[0] + (x - 1)] == 9:
+                        is_clear = 0
         # odkrywanie kafelkow
         if is_clear == 1:
             for x in range(3):
                 for y in range(3):
                     if game.clickedx + (x - 1) >= 0 and game.clickedx + (x - 1) < game.nx and game.clickedy + (y - 1) >= 0 and game.clickedy + (y - 1) < game.ny:
                         odkrywajtablice(game, sclick[0] + (x - 1), sclick[1] + (y - 1))
-                        if game.tab[sclick[1] + (y - 1)][sclick[0] + (x - 1)] == 9:
-                            game.bombsvisible = True
-                            game.tab[sclick[1] + (y - 1)][sclick[0] + (x - 1)] = 40
 
 
 def eventuser(event, game, screen, boxes):

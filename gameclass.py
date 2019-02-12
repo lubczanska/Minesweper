@@ -21,7 +21,6 @@ class Gamesettings:
         self.clickedx = 0                                                   #x gdzie jest kliknieta mysz
         self.clickedy = 0                                                   #y gdzie jest kliknieta mysz
         self.bombsvisible = False                                           #widocznosc bomb
-        self.flagsvisible = False                                           #flagi na bombach kiedy wygranko
         self.theme = "dark"                                                 #motyw dark/light
         self.starttime = False                                              #czy wystartowac timer
         self.fclick = True                                                  #czy pierwszy klik w planszy
@@ -51,12 +50,11 @@ class Gamesettings:
 
         #wygrana
         if opencells + self.n == self.nx * self.ny:
-           ### sendwin(self, "lost")
-            self.flagsvisible = True
+            #sendwin(self, "lost")
             self.running = False
         #przegrana
         elif self.bombsvisible:
-           ### sendwin(self, "won")
+            #sendwin(self, "won")
             self.running = False
 
     def reset(self):
@@ -66,7 +64,6 @@ class Gamesettings:
         self.clickedx = 0
         self.clickedy = 0
         self.bombsvisible = False
-        self.flagsvisible = False
         self.starttime = False
         self.fclick = True
         self.running = True

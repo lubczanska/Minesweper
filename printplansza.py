@@ -16,8 +16,6 @@ def printplanszeszybko (screen, game, textury):
                 screen.blit(textury.closed, (16 * x + game.borderleft, 16 * y + game.bordertop))
             elif game.tab[y][x] == 9 and game.bombsvisible:
                 screen.blit(textury.bomb, (16 * x + game.borderleft, 16 * y + game.bordertop))
-            elif game.tab[y][x] == 9 and game.flagsvisible:
-                screen.blit(textury.flaga, (16 * x + game.borderleft, 16 * y + game.bordertop))
             elif game.tab[y][x] == 40:
                 screen.blit(textury.bombdeath, (16 * x + game.borderleft, 16 * y + game.bordertop))
             elif game.tab[y][x] == 11:
