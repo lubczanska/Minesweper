@@ -1,4 +1,5 @@
 import math
+
 from  odkrywane import odkrywajtablice
 from planszator import generujtablice
 from timeit import default_timer as timer
