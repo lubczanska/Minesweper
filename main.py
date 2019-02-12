@@ -1,80 +1,103 @@
 import  time
 import pygame
 from timeit import default_timer as timer
-from klikato import eventuser
-from planszator import generujpusta
-from printplansza import printplanszeszybko, printborder, printcyferki, smileconverter
+from klikato import eventuser, clicked
+from printplansza import printplanszeszybko, printborder, printcyferki, smileconverter, printmenu
 from gameclass import Gamesettings
+from textureclass import Textureclass
+from textfieldclass import InputBox
+from client import waitforboard, getlos
+nx = 10
+ny = 10
+n = 10
+is_clicked = 0
+last_x = 0
+last_y = 0
 
-nx = 7
-ny = 7
-n = 5
+game = Gamesettings(nx, ny, n, 91, 12, 16, 16)                          #stworzenie obiektu z parametrami gry
+pygame.init()                                                           #inicjalizacja gry
+screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))  #stworzenie ekranu
+clock = pygame.time.Clock()                                             #stworzenie Zegara
+texture = Textureclass(game.theme)                                      #stworzenie obiektu z texturami
+sizex = InputBox(98, 47, 22, 17, "10")                                        #wejscie w menu wysokosc planszy
+sizey = InputBox(98, 68, 22, 17, "10")                                        #wejscie w menu szerokosc planszy
+bombs = InputBox(98, 89, 22, 17, "10")                                        #wejscie w menu ilsco bomby
+boxes = [sizex, sizey, bombs]
+sizextext = InputBox(31, 47, 60, 17, "Height", False)                   #napis w menu wysoksc nx
+sizeytext = InputBox(31, 68, 60, 17, "Width", False)                    #napis w menu szerokosc ny
+bombstext = InputBox(31, 89, 60, 17, "Bombs", False)                    #napis w menu ilsoc bomb n
+themetext = InputBox(31, 110, 60, 17, "Theme", False)                   #napis w menu motyw game.theme
+texts = [sizextext, sizeytext, bombstext, themetext]
+gamebutton = InputBox(20, 15, 41, 16, "Game", False, True, 12)          #napis w menu ilsoc bomb n
+multibutton = InputBox(game.nx * 16 - 35, 15, 35, 16, "Multi", False, True, 12)  #napis w menu motyw game.theme
+buttons = [gamebutton, multibutton]
+multiplayer = 0
 
-game = Gamesettings(nx, ny, n, 55, 12, 16, 16)
 
-pygame.init()
 
-screen = pygame.display.set_mode((game.windowsizex, game.windowsizey))
 
-running = 1
+while game.open:
+    if game.ismulti == 1:
+        game = waitforboard()
+        game.ismulti == 2
+    if game.ismulti == 2:
+        winorlos = getlos()
+        if winorlos == 1:
+            print("lost")
+            game.open = not game.open
+        elif winorlos == 2:
+            print("won"):
+            game.open = not game.open
 
-fclick = 1
-
-tab = generujpusta(game.nx, game.ny)
-
-pygame.display.flip()
-
-clock = pygame.time.Clock()
-
-start = 0
-r = 1
-while running == 1:
-
-    if tab == generujpusta(game.nx, game.ny):
-        fclick = 1
-    time = timer()
-    if r == 1:
-        if fclick == 0:
-            start = 0
-            time = int(time - start)
-    print(game.clicks)
+    #zablokowanie odswiezania gry do 30 FPS
     clock.tick(30)
-
-
-    r = game.scanforwin(tab)
-
-    end = timer()
-    end = int(end - start)
-    clock.tick(30)
-
-    running = game.scanforwin(tab)
+    #Czas gry
+    if(game.starttime) and game.running: game_time = int(timer() - game.starttime)
+    elif game.running: game_time = 0
+    #Sprawdzanie wygranej
+    game.scanforwin()
+    #Animacja klikania
+    if is_clicked > 0:
+        clicked(pygame.mouse.get_pos()[0], pygame.mouse.get_pos()[1], is_clicked, game)
 
     for event in pygame.event.get():
-
-        if event.type == pygame.MOUSEBUTTONDOWN :
-            if fclick == 1:
-                start = timer()
-            tab = eventuser(event, tab, fclick, game)
-            fclick = 0
+        #Klikniecie przycisku myszy
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1 or event.button == 2:
+                is_clicked = event.button
+            elif event.button == 3:
+                eventuser(event, game, screen, boxes )
+        elif event.type == pygame.MOUSEBUTTONUP and is_clicked > 0:
+            is_clicked = 0
+            for x in range(3):
+                for y in range(3):
+                    if game.clickedx + (x - 1) >= 0 and game.clickedx + (x - 1) < game.nx and game.clickedy + (y - 1) >= 0 and game.clickedy + (y - 1) < game.ny:
+                        if game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] >= 30 and game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] != 40:
+                            game.tab[game.clickedy + (y - 1)][game.clickedx + (x - 1)] -= 30
+            eventuser(event, game, screen, boxes)
+        #Zamkniecie gry
         if event.type == pygame.QUIT:
-            running = 0
-    for a in range(len(tab)):
+            game.open = False
+        #Eventy w wejsciach
+        for box in boxes:
+            box.handle_event(event)
 
-        for b in range(len(tab[0])):
+    if game.themechanged:
+        texture = Textureclass(game.theme)
+        if (game.theme == "dark"): game.color = (51, 51, 51)
+        else: game.color = (189, 189, 189)
+        game.themechange = False
 
-            printplanszeszybko(tab, a, b, screen, game)
-
-    printborder(screen, game)
-    printcyferki(0, game.clicks, screen, game)
-
-    printcyferki(1, time, screen, game)
-    smileconverter(screen, r, game)
-
+    #rysowanie gry
+    printborder(screen, game, texture, is_clicked)
+    printplanszeszybko(screen, game, texture)
+    printcyferki(0, game.clicks, screen, game, texture)
+    printcyferki(1, game_time, screen, game, texture)
+    smileconverter(screen, game, texture, is_clicked)
+    for button in buttons:
+        button.draw(screen, game.theme)
+    if game.menuvisible:
+        printmenu(screen, game, texture)
+        for box in boxes: box.draw(screen, game.theme)
+        for text in texts: text.draw(screen, game.theme)
     pygame.display.flip()
-
-
-pygame.display.flip()
-
-pygame.display.flip()
-time.sleep(2)
-

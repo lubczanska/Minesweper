@@ -1,28 +1,29 @@
-def odkrywajtablice(tab, x, y):
-
-    if tab[x][y] == 0:
-        tab[x][y] += 10
-    elif tab[x][y] < 9:
-        tab[x][y] += 10
-        return tab
+def odkrywajtablice(game, x, y):
+    #odkrywanie pola 0 i wszystkich na okolo
+    if game.tab[y][x] == 0:
+        game.tab[y][x] += 10
+    #odkrywanie pol z numerkami
+    elif game.tab[y][x] < 9:
+        game.tab[y][x] += 10
+        return 0
     else:
-        return tab
-    
-    if x > 0:
-        odkrywajtablice(tab, x - 1, y)
-    if y > 0:
-        odkrywajtablice(tab, x, y - 1)
-    if x < len(tab) - 1:
-        odkrywajtablice(tab, x + 1, y)
-    if y < len(tab[0]) - 1:
-        odkrywajtablice(tab, x, y + 1)
-    if y < len(tab[0]) - 1 and x < len(tab) - 1:
-        odkrywajtablice(tab, x + 1, y + 1)
-    if y < len(tab[0]) - 1 and x > 0:
-        odkrywajtablice(tab, x - 1, y + 1)
-    if y > 0 and x < len(tab) - 1:
-        odkrywajtablice(tab, x + 1, y - 1)
-    if y > 0 and x > 0:
-        odkrywajtablice(tab, x - 1, y - 1)
+        return 0
 
-    return tab
+    #odkrywanie wszystkich pol na okolo
+    if x > 0:
+        odkrywajtablice(game, x - 1, y)
+    if y > 0:
+        odkrywajtablice(game, x, y - 1)
+    if x < game.nx - 1:
+        odkrywajtablice(game, x + 1, y)
+    if y < game.ny - 1:
+        odkrywajtablice(game, x, y + 1)
+    if y < game.ny - 1 and x < game.nx - 1:
+        odkrywajtablice(game, x + 1, y + 1)
+    if y < game.ny - 1 and x > 0:
+        odkrywajtablice(game, x - 1, y + 1)
+    if y > 0 and x < game.nx- 1:
+        odkrywajtablice(game, x + 1, y - 1)
+    if y > 0 and x > 0:
+        odkrywajtablice(game, x - 1, y - 1)
+
