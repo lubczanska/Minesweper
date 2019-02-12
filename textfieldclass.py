@@ -29,7 +29,6 @@ class InputBox:
                 if event.key == pygame.K_BACKSPACE: self.text = self.text[:-1]
                 #dodawanie nowego znaku na koncu maksymalnie 2
                 elif len(self.text) < 2: self.text += event.unicode
-
                 if self.text != "" and int(self.text) > 33: self.text = "30"
             elif self.active:
                 # usuwanie ostatniego znaku
@@ -38,9 +37,6 @@ class InputBox:
                 # dodawanie nowego znaku na koncu maksymalnie 2
                 elif len(self.text) < 2:
                     self.text += event.unicode
-
-
-
 
     def draw(self, screen, theme):
         #
