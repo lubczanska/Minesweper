@@ -46,7 +46,7 @@ while game.open:
             print("lost")
             game.open = not game.open
         elif winorlos == 2:
-            print("won"):
+            print("won")
             game.open = not game.open
 
     #zablokowanie odswiezania gry do 30 FPS
