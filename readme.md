@@ -49,6 +49,9 @@ Podstawowym celem projektu jest zaimplementowanie wiernej kopii gry **Saper**.
   - Implementacja jasnych grafik
   - Bugfixy
   
+ #### Maciej Płonka
+  - Obsługa techniczna gita
+  
   ### Screenshoty z gry
   
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
