@@ -51,4 +51,11 @@ Podstawowym celem projektu jest zaimplementowanie wiernej kopii gry **Saper**.
   
   ### Screenshoty z gry
   
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Jasny Motyw](light.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Ciemny Motyw](dark.jpg)
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ![Jasny Motyw](light.jpg) 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ![Jasny Motyw Otwarte](lightopen.jpg)
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ![Ciemny Motyw](dark.jpg)
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  ![Ciemny Motyw Otwarte](darkopen.jpg)
