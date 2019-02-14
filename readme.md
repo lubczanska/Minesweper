@@ -17,3 +17,39 @@ Podstawowym celem projektu jest zaimplementowanie wiernej kopii gry **Saper**.
 - Stworzenie animacji zwycięstwa oraz przegranej
 - Stworzenie menu służącemu zmianie parametrów gry
 
+### Podział zadań
+
+#### Filip Hahs
+  - Generowanie planszy
+  - Implementacja klasy z ustawieniami gry
+  - Funkcja sprawdzajaca wygrana i przegrana
+  - Obsługa lewego i prawego kliknięcia
+  - Wyświetlanie planszy
+  - Implementacja głównego wątku gry
+  - Obsługa zdarzeń
+  - Bugfixy
+  - Multiplayer (a nie, to jednak nie)
+ 
+ #### Adam Jędrzejkowski
+  - Odkrywanie planszy
+  - Wyświetlanie napisów i pól wejściowych
+  - Obsługa przycisków
+  - Zliczanie czasu gry
+  - Resetowanie planszy
+  - Wyświetlanie przycisku i ramek
+  - Stworzenie ciemnych grafik
+  - Bugfixy
+  
+ #### Karolina Lubczańska
+  - Obsługa środkowego kliknięcia myszy
+  - Implementacja animacji przyciskania pól i przycisków
+  - Zliczanie punktów (ilości kliknięć)
+  - Wyświetlanie wyświetlaczy i buźki
+  - Ładowanie grafik do pygame
+  - Stworzenie jasnych grafik
+  - Bugfixy
+  
+  ### Screenshoty z gry
+  ![Jasny Motyw](light.jpg)
+  ![Ciemny Motyw](dark.jpg)
+
