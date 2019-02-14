@@ -11,11 +11,11 @@ Podstawowym celem projektu jest zaimplementowanie wiernej kopii gry **Saper**.
 - Implementacja generacji planszy
 - Wyświetlanie planszy z wykorzystaniem pygamea
 - Resetowanie planszy po kliknięciu w buźkę
-- Implementacja odpbirania przytcisku myszy
+- Implementacja odbierania przycisku myszy
 - Zmiana motyw z zależności humoru użytkownika
 - Wykrywanie wygrywania oraz przegranej
-- Stworzenie animacji zwycięstwa oraz przegranej
-- Stworzenie menu służącemu zmianie parametrów gry
+- Implementacja animacji zwycięstwa oraz przegranej
+- Implementacja menu służącemu zmianie parametrów gry
 
 ### Podział zadań
 
@@ -37,16 +37,16 @@ Podstawowym celem projektu jest zaimplementowanie wiernej kopii gry **Saper**.
   - Zliczanie czasu gry
   - Resetowanie planszy
   - Wyświetlanie przycisku i ramek
-  - Stworzenie ciemnych grafik
+  - Implementacja ciemnych grafik
   - Bugfixy
   
  #### Karolina Lubczańska
   - Obsługa środkowego kliknięcia myszy
   - Implementacja animacji przyciskania pól i przycisków
-  - Zliczanie punktów (ilości kliknięć)
+  - Zliczanie punktów (liczby kliknięć)
   - Wyświetlanie wyświetlaczy i buźki
   - Ładowanie grafik do pygame
-  - Stworzenie jasnych grafik
+  - Implementacja jasnych grafik
   - Bugfixy
   
   ### Screenshoty z gry
