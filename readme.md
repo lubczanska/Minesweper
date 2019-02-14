@@ -1,9 +1,9 @@
-#Minesweeper (saper)
+# Minesweeper (saper)
 
 Podstawowym celem projektu jest zaimplementowanie wiernej kopii gry **Saper**.
 
 
-###Założenia
+### Założenia
 
 - Wierna kopia
 - Zmienne parametry planszy
