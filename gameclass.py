@@ -70,4 +70,3 @@ class Gamesettings:
         self.tab = [[0 for i in range(self.nx)] for j in range(self.ny)]
         if (self.n >= self.nx * self.ny / 2): self.n = int(self.nx * self.ny / 3)
         return pygame.display.set_mode((self.windowsizex, self.windowsizey))
-

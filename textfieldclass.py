@@ -13,6 +13,7 @@ class InputBox:
         self.txt_surface = pygame.font.SysFont('Arial', self.fontsize, True).render(text, True, self.color)    #wyrenderowanie tekstu poczatkowego
         self.transparent = transparent                  #czy wyswietlac ramke
         self.active = False                             #czy aktywne
+        self.y = y
 
     def handle_event(self, event):
         if event.type == pygame.MOUSEBUTTONDOWN and self.editable:
@@ -22,11 +23,20 @@ class InputBox:
             else: self.active = False
         #zczytywanie przycisniec
         if event.type == pygame.KEYDOWN and self.editable:
-            if self.active:
+            if self.active and self.y != 89:
+                print(self.y)
                 #usuwanie ostatniego znaku
                 if event.key == pygame.K_BACKSPACE: self.text = self.text[:-1]
                 #dodawanie nowego znaku na koncu maksymalnie 2
                 elif len(self.text) < 2: self.text += event.unicode
+                if self.text != "" and int(self.text) > 33: self.text = "30"
+            elif self.active:
+                # usuwanie ostatniego znaku
+                if event.key == pygame.K_BACKSPACE:
+                    self.text = self.text[:-1]
+                # dodawanie nowego znaku na koncu maksymalnie 2
+                elif len(self.text) < 2:
+                    self.text += event.unicode
 
     def draw(self, screen, theme):
         #
